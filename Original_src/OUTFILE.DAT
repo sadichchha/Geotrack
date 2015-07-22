@@ -1,0 +1,594 @@
+1
+                                                  PROGRAM GEOTRACK II
+                                        NONLINEAR ELASTIC MULTI-LAYER TRACK ANALYSIS
+
+                                        Input Properties for Plotkin Case                                               
+
+
+                                        TIE LENGTH ........................ 102.0  IN.
+
+                                        NO. OF SEGMENTS PER TIE ........... 10
+
+                                        TIE SPACING ....................... 22.0  IN.
+
+                                        TIE WIDTH .........................  9.0  IN.
+
+                                        TIE AREA .......................... 63.0  IN.SQ.
+
+                                        TIE WEIGHT ........................ 225.0  LBS.
+
+                                        TIE EI ............................ 385875.0  K-IN.SQ.
+
+                                        RAIL GAUGE ........................ 59.25  IN.
+
+                                        RAIL AREA .........................  8.82  IN.SQ.
+
+                                        RAIL WEIGHT .......................  90.0  LBS./YARD
+
+                                        RAIL EI ........................... 2847000.0  K-IN.SQ.
+
+                                        RAIL FASTENER STIFFNESS ........... 7000000.0  LB. PER IN.
+
+                                        NO. OF AXLE LOADS ................. 3
+
+
+                                        AXLE LOADS ON TIE NOS. ............ 1   4   7   0
+
+                                        WHEEL LOAD/AXLE (KIPS) ............ 40.00  40.00  40.00    .00
+
+                                        NO. OF SOIL LAYERS ................ 4
+
+                                        OPTION FOR COEFFICIENTS ........... 1
+
+                                        NO. OF ITERATIONS ................. 3
+
+                                        CALCULATE AT OTHER DEPTH POINTS ... 0
+
+                                        CALCULATE AT OFFSET LOCATIONS ..... 0
+
+                                        CONSIDER TIE/BALLAST SEPARATION ... 0
+
+                                        FIRST TIE OUTPUT .................. 4
+
+                                        LAST TIE OUTPUT ................... 4
+
+                                        FIRST TIE SEGMENT OUTPUT .......... 2
+
+                                        LAST TIE SEGMENT OUTPUT ........... 3
+
+                                        PRINT STANDARD SOIL OUTPUT ........ 1
+
+                                        PRINT PRINCIPLE STRESSES .......... 1
+
+                                        PRINT EQUIVALENT TRIAXIAL DATA .... 1
+
+
+
+
+                                LAYER     E(I)-K/IN.SQ.   VRAT(I)    DEPTH-IN     GAMMA-PCF  KNOT
+
+                                  1         25000.00        .35        18.00       .07       1.00
+                                  2          2750.00        .40       108.00       .08       1.00
+                                  3          2750.00        .40        84.00       .08       1.00
+                                  4       **********        .48          .00       .09       1.00
+
+
+         LAYER       KTYPE                          MODULUS DESCRIPTION
+
+           1           1          LOG E - LOG BULK STRESS  K1=  1500.00     K2=      .50
+           2           7          E - DEVIATOR STRESS FOR SOFT COHESIVE    SUBGRADE
+           3           7          E - DEVIATOR STRESS FOR SOFT COHESIVE    SUBGRADE
+           4           0          CONSTANT
+
+
+                                        DIFFERENT DEPTHS AT WHICH MODULI ARE COMPUTED
+
+
+                                        Z(1)=    .50 IN.
+
+                                        Z(2)=  18.50 IN.
+
+                                        Z(3)= 135.00 IN.
+
+                                        Z(4)= 228.50 IN.
+1
+ ITERATION= 0
+                                             -----------------------------------
+                                                   DEFLECTIONS AND REACTIONS  
+                                                   NEG. DEFL. IS DOWNWARD
+                                                   NEG. REACTION IS TENSION
+                                              -----------------------------------
+
+
+                                                  ---- SINGLE AXLE ----
+
+
+
+ TIE     DEFLECTION       REACTION     DEFLECTION                         TIE AND SOIL REACTION
+  NO        RAIL         RAIL SEAT         TIE          DIV 1          DIV 2          DIV 3          DIV 4          DIV 5
+
+   1    -.17692E+00     .13783E+05    -.17495E+00     .31350E+04     .32901E+04     .38213E+04     .21718E+04     .13651E+04
+   2    -.15393E+00     .83021E+04    -.15274E+00     .21977E+04     .17819E+04     .21723E+04     .12702E+04     .88010E+03
+   3    -.11247E+00     .37603E+04    -.11193E+00     .12196E+04     .67508E+03     .90479E+03     .55648E+03     .40435E+03
+   4    -.73347E-01     .17325E+04    -.73100E-01     .64331E+03     .26740E+03     .39491E+03     .25874E+03     .16812E+03
+   5    -.41737E-01     .92436E+03    -.41605E-01     .31038E+03     .17075E+03     .23720E+03     .15220E+03     .53833E+02
+   6    -.15574E-01    -.16109E+04    -.15805E-01    -.18872E+03    -.49361E+03    -.50479E+03    -.26118E+03    -.16258E+03
+
+
+  TIE       TIE CENTER       TIE RAIL-SEAT                                TIE SEGMENT DEFLECTION
+  NO.     BENDING MOMENT     BENDING MOMENT             DIV 1          DIV 2          DIV 3          DIV 4          DIV 5
+
+    1       -.93435E+04        .71009E+05              -.14463E+00    -.16605E+00    -.17777E+00    -.17811E+00    -.17621E+00
+    2       -.21485E+04        .46592E+05              -.12859E+00    -.14539E+00    -.15559E+00    -.15784E+00    -.15766E+00
+    3        .23304E+04        .23951E+05              -.96158E-01    -.10695E+00    -.11419E+00    -.11700E+00    -.11782E+00
+    4        .26357E+04        .12094E+05              -.63835E-01    -.70114E-01    -.74553E-01    -.76632E-01    -.77420E-01
+    5        .16097E+04        .60886E+04              -.36895E-01    -.40077E-01    -.42355E-01    -.43466E-01    -.43924E-01
+    6        .37409E+04       -.60702E+04              -.15543E-01    -.15543E-01    -.16240E-01    -.17616E-01    -.18550E-01
+
+
+  PEAK RAIL BENDING MOMENT=  .36659E+06
+
+
+  TRACK MODULUS U =    2.430 KIPS/IN./IN.
+
+
+                                        MODULI USED FOR THE ITERATIONS
+
+
+
+                                                   INITIAL     NEW
+                                        LAYER      MODULUS   MODULUS
+                                                    (PSI)       (PSI)
+
+                                          1        25000.0    54469.9
+                                          2         2750.0     3569.6
+                                          3         2750.0     6206.9
+                                          4       ********   ********
+1
+
+                    SUPERIMPOSED RESULTS FROM FINAL ITERATION
+
+                    ----- DEFLECTIONS AND REACTIONS ----
+
+
+ TIE     DEFLECTION       REACTION     DEFLECTION                         TIE AND SOIL REACTION
+  NO        RAIL         RAIL SEAT         TIE          DIV 1          DIV 2          DIV 3          DIV 4          DIV 5
+
+   4    -.32362E+00     .17248E+05    -.32115E+00     .44216E+04     .38249E+04     .46111E+04     .26892E+04     .17014E+04
+1
+
+          TIE CENTER    TIE RAIL-SEAT      RAIL
+  TIE       BENDING       BENDING         BENDING                        TIE SEGMENT VERTICAL DEFLECTIONS (IN.)
+  NO.       MOMENT        MOMENT          MOMENT          DIV 1          DIV 2          DIV 3          DIV 4          DIV 5
+           (IN.-LBS.)    (IN.-LBS.)     (IN.-LBS.)
+
+    4      -.40721E+04     .95198E+05     .26550E+06    -.27229E+00    -.30628E+00    -.32687E+00    -.33137E+00    -.33105E+00
+1
+
+                                           SOIL VERTICAL DISPLACEMENTS AND INCREMENTAL STRESSES
+
+                                           T=TIE NUMBER (1=CENTER TIE)
+                                           SEG=SEGMENT NUMBER
+                                           Z=DEPTH POINT NUMBER
+
+                                           UNITS ARE INCHES AND PSI.
+
+                                           COMPRESSION IS NEGATIVE
+
+
+
+                                           Z(1) =    .50 IN.
+
+                                           Z(2) =  18.50 IN.
+
+                                           Z(3) = 135.00 IN.
+
+                                           Z(4) = 228.50 IN.
+1          T   SEG  Z       W        THETA     S-XX      S-YY      S-ZZ      S-XY      S-XZ      S-YZ
+
+          ---------------------------------------------------------------------------------------------
+
+           4   2    1     .30616    -131.2     -47.6     -43.9     -39.6      -4.3       -.2        .0
+           4   2    2     .29223     -18.9      -3.7      -4.5     -10.8        .5      -1.5        .0
+           4   2    3     .06972      -5.5       -.6       -.7      -4.1        .2       -.5        .0
+           4   2    4     .00000      -3.1       -.3       -.3      -2.5        .1       -.3        .0
+
+          ---------------------------------------------------------------------------------------------
+
+           4   3    1     .32677    -130.5     -47.6     -43.9     -39.0      -2.7        .5        .0
+           4   3    2     .31304     -20.3      -4.2      -4.8     -11.3        .3       -.5        .0
+           4   3    3     .07321      -5.7       -.6       -.7      -4.3        .1       -.4        .0
+           4   3    4     .00000      -3.2       -.3       -.3      -2.5        .0       -.2        .0
+1                                          -------------------------
+                                                ELEMENT UNKNOWNS 
+                                           -------------------------
+
+
+                                           T=TIE NUMBER (1=CENTER TIE)
+                                           SEG=SEGMENT NUMBER
+                                           Z=DEPTH POINT NUMBER
+                                           W=VERTICAL DISPLACEMENT-IN.
+                                           SIG1=MAXIMUM PRINCIPALSTRESS-PSI.
+                                           SIG2=INTERMEDIATE PRINCIPAL STRESS-PSI.
+                                           SIG3=MINIMUM PRINCIPAL STRESS-PSI.
+                                           A1  =DIRECTION COSINES FOR SIG1.
+                                           A2  =DIRECTION COSINES FOR SIG2.
+                                           A3  =DIRECTION COSINES FOR SIG3.
+                                           THETA=BULK STRESS=SIG1+SIG2+SIG3
+                                           DEV=DEVIATORIC STRESS=SIG1-SIG3
+
+
+                                           COMPRESSION IS NEGATIVE
+
+
+
+                                           Z(1) =    .50 IN.
+
+                                           Z(2) =  18.50 IN.
+
+                                           Z(3) = 135.00 IN.
+
+                                           Z(4) = 228.50 IN.
+1      T SEG Z     W        SIG1    A1X    A1Y    A1Z    SIG2    A2X    A2Y    A2Z    SIG3    A3X    A3Y    A3Z     BULK    DEV
+
+
+
+                                           --------------------------------------------------
+
+       4  2  1   .30616    -50.5    .84    .55    .02   -41.1   -.55    .83   -.09   -39.6   -.06    .06   1.00    *****  -10.9
+       4  2  2   .29223    -11.1    .20   -.01    .98    -4.6   -.33    .94    .08    -3.2    .92    .34   -.19    -18.9   -7.9
+       4  2  3   .06972     -4.2    .15   -.01    .99     -.8   -.49    .87    .08     -.5    .86    .50   -.13     -5.5   -3.7
+       4  2  4   .00000     -2.5    .15    .00    .99     -.4   -.44    .90    .07     -.2    .89    .44   -.13     -3.1   -2.3
+
+                                           --------------------------------------------------
+
+       4  3  1   .32677    -49.1    .88    .47   -.04   -42.5   -.46    .88    .06   -39.0    .06   -.04   1.00    *****  -10.1
+       4  3  2   .31304    -11.4    .07    .00   1.00    -4.9   -.34    .94    .03    -4.1    .94    .35   -.06    -20.3   -7.3
+       4  3  3   .07321     -4.4    .11    .00    .99     -.8   -.40    .92    .05     -.5    .91    .40   -.10     -5.7   -3.9
+       4  3  4   .00000     -2.6    .11    .00    .99     -.4   -.37    .93    .04     -.2    .92    .37   -.10     -3.2   -2.3
+1
+
+                             GEOSTAT.  INIT.  INIT.                EQUIVALENT TRIAXIAL STATES
+    TIE SEG POINT DEPTH KNOT VERT.STR.  P      Q      SOCT   TOCT  SIG 1  SIG 3  MAX P  MAX Q
+                  (IN.)        (PSI)   (PSI)  (PSI)  (PSI)  (PSI)  (PSI)  (PSI)  (PSI)  (PSI)
+
+
+    ------------------------------------------------------------------------------------------
+
+     4   2    1     .5   1.00    .44     .44    .00  44.18   4.81  50.98  40.78  45.88   5.10
+     4   2    2   18.5   1.00   1.69    1.69    .00   8.00   3.43  12.86   5.58   9.22   3.64
+     4   2    3  135.0   1.00  10.79   10.79    .00  12.63   1.69  15.01  11.43  13.22   1.79
+     4   2    4  228.5   1.00  18.37   18.37    .00  19.41   1.06  20.90  18.66  19.78   1.12
+
+    ------------------------------------------------------------------------------------------
+
+     4   3    1     .5   1.00    .51     .51    .00  44.02   4.20  49.96  41.05  45.51   4.45
+     4   3    2   18.5   1.00   1.76    1.76    .00   8.54   3.26  13.16   6.23   9.69   3.46
+     4   3    3  135.0   1.00  10.87   10.87    .00  12.75   1.76  15.24  11.51  13.37   1.87
+     4   3    4  228.5   1.00  18.44   18.44    .00  19.49   1.08  21.01  18.73  19.87   1.14
+1
+ ITERATION= 1
+                                             -----------------------------------
+                                                   DEFLECTIONS AND REACTIONS  
+                                                   NEG. DEFL. IS DOWNWARD
+                                                   NEG. REACTION IS TENSION
+                                              -----------------------------------
+
+
+                                                  ---- SINGLE AXLE ----
+
+
+
+ TIE     DEFLECTION       REACTION     DEFLECTION                         TIE AND SOIL REACTION
+  NO        RAIL         RAIL SEAT         TIE          DIV 1          DIV 2          DIV 3          DIV 4          DIV 5
+
+   1    -.15574E-01    -.16109E+04    -.15805E-01     .00000E+00     .00000E+00     .00000E+00     .00000E+00     .00000E+00
+   2    -.41737E-01     .92436E+03    -.41605E-01     .00000E+00     .00000E+00     .00000E+00     .00000E+00     .00000E+00
+
+
+  TIE       TIE CENTER       TIE RAIL-SEAT                                TIE SEGMENT DEFLECTION
+  NO.     BENDING MOMENT     BENDING MOMENT             DIV 1          DIV 2          DIV 3          DIV 4          DIV 5
+
+    1        .39227E+04        .64472E+05              -.15805E-01    -.15805E-01    -.15805E-01    -.15805E-01    -.15805E-01
+    2        .17915E+04        .76631E+05              -.41605E-01    -.41605E-01    -.41605E-01    -.41605E-01    -.41605E-01
+
+
+  PEAK RAIL BENDING MOMENT=  .44295E+06
+
+
+  TRACK MODULUS U =   62.040 KIPS/IN./IN.
+
+
+                                                   INITIAL     NEW
+                                        LAYER      MODULUS   MODULUS
+                                                    (PSI)       (PSI)
+
+                                          1        54469.9    52708.4
+                                          2         3569.6     5764.5
+                                          3         6206.9     7597.8
+                                          4       ********   ********
+1
+
+                    SUPERIMPOSED RESULTS FROM FINAL ITERATION
+
+                    ----- DEFLECTIONS AND REACTIONS ----
+
+
+ TIE     DEFLECTION       REACTION     DEFLECTION                         TIE AND SOIL REACTION
+  NO        RAIL         RAIL SEAT         TIE          DIV 1          DIV 2          DIV 3          DIV 4          DIV 5
+
+   4    -.24052E+00     .59098E+04    -.23967E+00     .00000E+00     .00000E+00     .00000E+00     .00000E+00     .00000E+00
+1
+
+          TIE CENTER    TIE RAIL-SEAT      RAIL
+  TIE       BENDING       BENDING         BENDING                        TIE SEGMENT VERTICAL DEFLECTIONS (IN.)
+  NO.       MOMENT        MOMENT          MOMENT          DIV 1          DIV 2          DIV 3          DIV 4          DIV 5
+           (IN.-LBS.)    (IN.-LBS.)     (IN.-LBS.)
+
+    4      -.17508E+06     .00000E+00     .50189E+07    -.23967E+00    -.23967E+00    -.23967E+00    -.23967E+00    -.23967E+00
+1
+
+                                           SOIL VERTICAL DISPLACEMENTS AND INCREMENTAL STRESSES
+
+                                           T=TIE NUMBER (1=CENTER TIE)
+                                           SEG=SEGMENT NUMBER
+                                           Z=DEPTH POINT NUMBER
+
+                                           UNITS ARE INCHES AND PSI.
+
+                                           COMPRESSION IS NEGATIVE
+
+
+
+                                           Z(1) =    .50 IN.
+
+                                           Z(2) =  18.50 IN.
+
+                                           Z(3) = 135.00 IN.
+
+                                           Z(4) = 228.50 IN.
+1          T   SEG  Z       W        THETA     S-XX      S-YY      S-ZZ      S-XY      S-XZ      S-YZ
+
+          ---------------------------------------------------------------------------------------------
+
+           4   2    1     .07303        .8      -4.8       9.2      -3.6       4.7       -.1        .0
+           4   2    2     .07233      -5.4      -1.2      -2.2      -2.1       -.3       -.3        .0
+           4   2    3     .01678      -3.0       -.3       -.6      -2.2       -.1       -.3        .0
+           4   2    4     .00000      -1.8       -.1       -.2      -1.4        .0       -.2        .0
+
+          ---------------------------------------------------------------------------------------------
+
+           4   3    1     .07857       2.6      -4.9      10.4      -2.9       3.2        .1        .0
+           4   3    2     .07792      -5.9      -1.3      -2.3      -2.3       -.2       -.2        .0
+           4   3    3     .01757      -3.1       -.2       -.6      -2.3       -.1       -.2        .0
+           4   3    4     .00000      -1.8       -.1       -.2      -1.5        .0       -.2        .0
+1                                          -------------------------
+                                                ELEMENT UNKNOWNS 
+                                           -------------------------
+
+
+                                           T=TIE NUMBER (1=CENTER TIE)
+                                           SEG=SEGMENT NUMBER
+                                           Z=DEPTH POINT NUMBER
+                                           W=VERTICAL DISPLACEMENT-IN.
+                                           SIG1=MAXIMUM PRINCIPALSTRESS-PSI.
+                                           SIG2=INTERMEDIATE PRINCIPAL STRESS-PSI.
+                                           SIG3=MINIMUM PRINCIPAL STRESS-PSI.
+                                           A1  =DIRECTION COSINES FOR SIG1.
+                                           A2  =DIRECTION COSINES FOR SIG2.
+                                           A3  =DIRECTION COSINES FOR SIG3.
+                                           THETA=BULK STRESS=SIG1+SIG2+SIG3
+                                           DEV=DEVIATORIC STRESS=SIG1-SIG3
+
+
+                                           COMPRESSION IS NEGATIVE
+
+
+
+                                           Z(1) =    .50 IN.
+
+                                           Z(2) =  18.50 IN.
+
+                                           Z(3) = 135.00 IN.
+
+                                           Z(4) = 228.50 IN.
+1      T SEG Z     W        SIG1    A1X    A1Y    A1Z    SIG2    A2X    A2Y    A2Z    SIG3    A3X    A3Y    A3Z     BULK    DEV
+
+
+
+                                           --------------------------------------------------
+
+       4  2  1   .07303     -6.3    .96   -.29    .02    -3.6   -.02    .01   1.00    10.6    .29    .96    .00       .8  -16.9
+       4  2  2   .07233     -2.3    .36    .76    .55    -2.1    .06   -.60    .80    -1.0    .93   -.25   -.26     -5.4   -1.3
+       4  2  3   .01678     -2.3    .16    .01    .99     -.6    .21    .98   -.04     -.2    .96   -.22   -.15     -3.0   -2.1
+       4  2  4   .00000     -1.5    .16    .00    .99     -.2    .16    .99   -.03     -.1    .97   -.16   -.16     -1.8   -1.4
+
+                                           --------------------------------------------------
+
+       4  3  1   .07857     -5.6    .98   -.20   -.02    -2.9    .02   -.01   1.00    11.0    .20    .98    .00      2.6  -16.6
+       4  3  2   .07792     -2.4    .26    .83    .50    -2.3    .08   -.53    .84    -1.2    .96   -.18   -.20     -5.9   -1.2
+       4  3  3   .01757     -2.4    .11    .00    .99     -.6    .15    .99   -.02     -.2    .98   -.16   -.11     -3.1   -2.2
+       4  3  4   .00000     -1.5    .11    .00    .99     -.2    .12    .99   -.02     -.1    .99   -.12   -.11     -1.8   -1.4
+1
+
+                             GEOSTAT.  INIT.  INIT.                EQUIVALENT TRIAXIAL STATES
+    TIE SEG POINT DEPTH KNOT VERT.STR.  P      Q      SOCT   TOCT  SIG 1  SIG 3  MAX P  MAX Q
+                  (IN.)        (PSI)   (PSI)  (PSI)  (PSI)  (PSI)  (PSI)  (PSI)  (PSI)  (PSI)
+
+
+    ------------------------------------------------------------------------------------------
+
+     4   2    1     .5   1.00    .44     .44    .00    .18   7.41  10.66  -5.06   2.80   7.86
+     4   2    2   18.5   1.00   1.69    1.69    .00   3.50    .58   4.31   3.09   3.70    .61
+     4   2    3  135.0   1.00  10.79   10.79    .00  11.81    .90  13.09  11.17  12.13    .96
+     4   2    4  228.5   1.00  18.37   18.37    .00  18.96    .62  19.83  18.52  19.18    .65
+
+    ------------------------------------------------------------------------------------------
+
+     4   3    1     .5   1.00    .51     .51    .00   -.35   7.28   9.94  -5.50   2.22   7.72
+     4   3    2   18.5   1.00   1.76    1.76    .00   3.72    .55   4.51   3.33   3.92    .59
+     4   3    3  135.0   1.00  10.87   10.87    .00  11.91    .94  13.24  11.25  12.24    .99
+     4   3    4  228.5   1.00  18.44   18.44    .00  19.04    .62  19.92  18.60  19.26    .66
+1
+ ITERATION= 2
+                                             -----------------------------------
+                                                   DEFLECTIONS AND REACTIONS  
+                                                   NEG. DEFL. IS DOWNWARD
+                                                   NEG. REACTION IS TENSION
+                                              -----------------------------------
+
+
+                                                  ---- SINGLE AXLE ----
+
+
+
+ TIE     DEFLECTION       REACTION     DEFLECTION                         TIE AND SOIL REACTION
+  NO        RAIL         RAIL SEAT         TIE          DIV 1          DIV 2          DIV 3          DIV 4          DIV 5
+
+   1    -.82837E-01     .20134E+05    -.79961E-01     .00000E+00     .00000E+00     .00000E+00     .00000E+00     .00000E+00
+   2    -.10794E+00    -.26851E+03    -.10798E+00     .00000E+00     .00000E+00     .00000E+00     .00000E+00     .00000E+00
+
+
+  TIE       TIE CENTER       TIE RAIL-SEAT                                TIE SEGMENT DEFLECTION
+  NO.     BENDING MOMENT     BENDING MOMENT             DIV 1          DIV 2          DIV 3          DIV 4          DIV 5
+
+    1       -.93512E+05        .77983E+05              -.79961E-01    -.79961E-01    -.79961E-01    -.79961E-01    -.79961E-01
+    2       -.72848E+05        .12269E+05              -.10798E+00    -.10798E+00    -.10798E+00    -.10798E+00    -.10798E+00
+
+
+  PEAK RAIL BENDING MOMENT=  .34542E+06
+
+
+  TRACK MODULUS U =    6.682 KIPS/IN./IN.
+
+
+                                                   INITIAL     NEW
+                                        LAYER      MODULUS   MODULUS
+                                                    (PSI)       (PSI)
+
+                                          1        52708.4    34657.3
+                                          2         5764.5     6106.5
+                                          3         7597.8     7228.8
+                                          4       ********   ********
+1
+
+                    SUPERIMPOSED RESULTS FROM FINAL ITERATION
+
+                    ----- DEFLECTIONS AND REACTIONS ----
+
+
+ TIE     DEFLECTION       REACTION     DEFLECTION                         TIE AND SOIL REACTION
+  NO        RAIL         RAIL SEAT         TIE          DIV 1          DIV 2          DIV 3          DIV 4          DIV 5
+
+   4    -.22953E+00     .23599E+05    -.22616E+00     .00000E+00     .00000E+00     .00000E+00     .00000E+00     .00000E+00
+1
+
+          TIE CENTER    TIE RAIL-SEAT      RAIL
+  TIE       BENDING       BENDING         BENDING                        TIE SEGMENT VERTICAL DEFLECTIONS (IN.)
+  NO.       MOMENT        MOMENT          MOMENT          DIV 1          DIV 2          DIV 3          DIV 4          DIV 5
+           (IN.-LBS.)    (IN.-LBS.)     (IN.-LBS.)
+
+    4      -.69913E+06     .00000E+00     .71036E+07    -.22616E+00    -.22616E+00    -.22616E+00    -.22616E+00    -.22616E+00
+1
+
+                                           SOIL VERTICAL DISPLACEMENTS AND INCREMENTAL STRESSES
+
+                                           T=TIE NUMBER (1=CENTER TIE)
+                                           SEG=SEGMENT NUMBER
+                                           Z=DEPTH POINT NUMBER
+
+                                           UNITS ARE INCHES AND PSI.
+
+                                           COMPRESSION IS NEGATIVE
+
+
+
+                                           Z(1) =    .50 IN.
+
+                                           Z(2) =  18.50 IN.
+
+                                           Z(3) = 135.00 IN.
+
+                                           Z(4) = 228.50 IN.
+1          T   SEG  Z       W        THETA     S-XX      S-YY      S-ZZ      S-XY      S-XZ      S-YZ
+
+          ---------------------------------------------------------------------------------------------
+
+           4   2    1     .07456     -14.2     -10.5       2.0      -5.7       4.9       -.2        .0
+           4   2    2     .07362      -9.1      -1.7      -3.3      -4.0       -.6       -.8        .0
+           4   2    3     .01790      -3.9       -.4       -.7      -2.9       -.1       -.4        .0
+           4   2    4     .00000      -2.3       -.2       -.3      -1.8        .0       -.3        .0
+
+          ---------------------------------------------------------------------------------------------
+
+           4   3    1     .08038     -13.6     -10.9       2.6      -5.2       2.4        .1        .0
+           4   3    2     .07946      -9.9      -1.9      -3.6      -4.3       -.2       -.3        .0
+           4   3    3     .01876      -4.1       -.3       -.7      -3.0       -.1       -.3        .0
+           4   3    4     .00000      -2.3       -.2       -.3      -1.9        .0       -.2        .0
+1                                          -------------------------
+                                                ELEMENT UNKNOWNS 
+                                           -------------------------
+
+
+                                           T=TIE NUMBER (1=CENTER TIE)
+                                           SEG=SEGMENT NUMBER
+                                           Z=DEPTH POINT NUMBER
+                                           W=VERTICAL DISPLACEMENT-IN.
+                                           SIG1=MAXIMUM PRINCIPALSTRESS-PSI.
+                                           SIG2=INTERMEDIATE PRINCIPAL STRESS-PSI.
+                                           SIG3=MINIMUM PRINCIPAL STRESS-PSI.
+                                           A1  =DIRECTION COSINES FOR SIG1.
+                                           A2  =DIRECTION COSINES FOR SIG2.
+                                           A3  =DIRECTION COSINES FOR SIG3.
+                                           THETA=BULK STRESS=SIG1+SIG2+SIG3
+                                           DEV=DEVIATORIC STRESS=SIG1-SIG3
+
+
+                                           COMPRESSION IS NEGATIVE
+
+
+
+                                           Z(1) =    .50 IN.
+
+                                           Z(2) =  18.50 IN.
+
+                                           Z(3) = 135.00 IN.
+
+                                           Z(4) = 228.50 IN.
+1      T SEG Z     W        SIG1    A1X    A1Y    A1Z    SIG2    A2X    A2Y    A2Z    SIG3    A3X    A3Y    A3Z     BULK    DEV
+
+
+
+                                           --------------------------------------------------
+
+       4  2  1   .07456    -12.2    .94   -.33    .02    -5.7   -.02    .01   1.00     3.7    .33    .94   -.01    -14.2  -16.0
+       4  2  2   .07362     -4.2    .33    .21    .92    -3.5    .19    .94   -.28    -1.4    .93   -.27   -.27     -9.1   -2.9
+       4  2  3   .01790     -3.0    .16    .01    .99     -.7    .22    .98   -.04     -.3    .96   -.22   -.15     -3.9   -2.7
+       4  2  4   .00000     -1.9    .16    .00    .99     -.3    .16    .99   -.03     -.1    .98   -.16   -.16     -2.3   -1.7
+
+                                           --------------------------------------------------
+
+       4  3  1   .08038    -11.3    .99   -.17   -.02    -5.2    .02    .00   1.00     3.0    .17    .99    .00    -13.6  -14.4
+       4  3  2   .07946     -4.4    .14    .05    .99    -3.7    .12    .99   -.06    -1.9    .98   -.13   -.14     -9.9   -2.5
+       4  3  3   .01876     -3.1    .11    .00    .99     -.7    .16    .99   -.02     -.3    .98   -.16   -.11     -4.1   -2.8
+       4  3  4   .00000     -1.9    .11    .00    .99     -.3    .12    .99   -.01     -.1    .99   -.12   -.11     -2.3   -1.8
+1
+
+                             GEOSTAT.  INIT.  INIT.                EQUIVALENT TRIAXIAL STATES
+    TIE SEG POINT DEPTH KNOT VERT.STR.  P      Q      SOCT   TOCT  SIG 1  SIG 3  MAX P  MAX Q
+                  (IN.)        (PSI)   (PSI)  (PSI)  (PSI)  (PSI)  (PSI)  (PSI)  (PSI)  (PSI)
+
+
+    ------------------------------------------------------------------------------------------
+
+     4   2    1     .5   1.00    .44     .44    .00   5.16   6.55  14.42    .53   7.48   6.94
+     4   2    2   18.5   1.00   1.69    1.69    .00   4.71   1.21   6.43   3.85   5.14   1.29
+     4   2    3  135.0   1.00  10.79   10.79    .00  12.11   1.19  13.79  11.27  12.53   1.26
+     4   2    4  228.5   1.00  18.37   18.37    .00  19.13    .78  20.23  18.57  19.40    .83
+
+    ------------------------------------------------------------------------------------------
+
+     4   3    1     .5   1.00    .51     .51    .00   5.03   5.88  13.35    .87   7.11   6.24
+     4   3    2   18.5   1.00   1.76    1.76    .00   5.06   1.06   6.56   4.31   5.44   1.12
+     4   3    3  135.0   1.00  10.87   10.87    .00  12.22   1.23  13.96  11.35  12.66   1.31
+     4   3    4  228.5   1.00  18.44   18.44    .00  19.21    .79  20.33  18.65  19.49    .84
