@@ -1,491 +1,439 @@
-11:53:19 **** Build of configuration Debug for project Geotrack_v1 ****
+13:19:14 **** Incremental Build of configuration Debug for project Geotrack_v2 ****
 make all 
-Building file: ../geotrack.f
+Building file: ../Geotrack_scratch.f
 Invoking: GNU Fortran Compiler
-gfortran -funderscoring -O0 -g -Wall -c -fmessage-length=0 -o "geotrack.o" "../geotrack.f"
-../geotrack.f:2026.12:
+gfortran -funderscoring -O0 -g -Wall -c -fmessage-length=0 -o "Geotrack_scratch.o" "../Geotrack_scratch.f"
+../Geotrack_scratch.f:1518.12:
 
       TID=3HTIE                                                         
             1
 Warning: Legacy Extension: Hollerith constant at (1)
-../geotrack.f:2031.12:
+../Geotrack_scratch.f:1523.12:
 
       RID=4HRAIL                                                        
             1
 Warning: Legacy Extension: Hollerith constant at (1)
-../geotrack.f:272.16:
-
- 3030 THETAI(I)=SIGMAV(I)+KNOT(I)*SIGMAV(I)+KNOT(I)*SIGMAV(I)           
-                1
-Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
-../geotrack.f:892.5:
+../Geotrack_scratch.f:821.5:
 
  3531 IF(LACOPT.GT.0) CALL LAC(IPERM)                                   
      1
 Warning: Label 3531 at (1) defined but not used
-../geotrack.f:814.5:
+../Geotrack_scratch.f:740.5:
 
   355 FORMAT (1H )                                                      
      1
 Warning: Label 355 at (1) defined but not used
-../geotrack.f:831.5:
+../Geotrack_scratch.f:759.5:
 
   195 IZT=0                                                             
      1
 Warning: Label 195 at (1) defined but not used
-../geotrack.f:821.5:
+../Geotrack_scratch.f:749.5:
 
   109 IF (R)115,115,110                                                 
      1
 Warning: Label 109 at (1) defined but not used
-../geotrack.f:820.5:
+../Geotrack_scratch.f:748.5:
 
   107 CALL COEE(I)                                                      
      1
 Warning: Label 107 at (1) defined but not used
-../geotrack.f:420.5:
+../Geotrack_scratch.f:891.5:
 
    40 RETURN                                                            
      1
 Warning: Label 40 at (1) defined but not used
-../geotrack.f:404.5:
+../Geotrack_scratch.f:875.5:
 
    15 K=1                                                               
      1
 Warning: Label 15 at (1) defined but not used
-../geotrack.f:392.12:
+../Geotrack_scratch.f:863.12:
 
       NTEST=AR/R+.0001                                                  
             1
 Warning: Possible change of value in conversion from REAL(4) to INTEGER(4) at (1)
-../geotrack.f:395.12:
+../Geotrack_scratch.f:866.12:
 
       NTEST=R/AR+0.0001                                                 
             1
 Warning: Possible change of value in conversion from REAL(4) to INTEGER(4) at (1)
-../geotrack.f:939.5:
+../Geotrack_scratch.f:1296.5:
 
    10 DO 40 I=1,ITN                                                     
      1
 Warning: Label 10 at (1) defined but not used
-../geotrack.f:1032.10:
+../Geotrack_scratch.f:1389.10:
 
       SST=2.0*(1.0+VRAT(L))*CTR/E(L)                                    
           1
 Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
-../geotrack.f:3179.5:
+../Geotrack_scratch.f:2673.5:
 
  4410 WRITE(*,441)                                                      
      1
 Warning: Label 4410 at (1) defined but not used
-../geotrack.f:2884.5:
+../Geotrack_scratch.f:2378.5:
 
  3431 IF(YDIST.GT.YMAX) GO TO 3441                                      
      1
 Warning: Label 3431 at (1) defined but not used
-../geotrack.f:2872.5:
+../Geotrack_scratch.f:2366.5:
 
  3321 DO 3501 KZ=2,IZ                                                   
      1
 Warning: Label 3321 at (1) defined but not used
-../geotrack.f:2615.5:
+../Geotrack_scratch.f:2109.5:
 
   346 J1=ITIE-K                                                         
      1
 Warning: Label 346 at (1) defined but not used
-../geotrack.f:2566.5:
+../Geotrack_scratch.f:2060.5:
 
   332 DO 350 KZ=2,IZ                                                    
      1
 Warning: Label 332 at (1) defined but not used
-../geotrack.f:2026.10:
+../Geotrack_scratch.f:1518.10:
 
       TID=3HTIE                                                         
           1
 Warning: Extension: Conversion from HOLLERITH to REAL(4) at (1)
-../geotrack.f:2031.10:
+../Geotrack_scratch.f:1523.10:
 
       RID=4HRAIL                                                        
           1
 Warning: Extension: Conversion from HOLLERITH to REAL(4) at (1)
-../geotrack.f:1486.18:
+../Geotrack_scratch.f:3080.18:
 
       CALL SRMTRX(AY,TEM,N,M)                                           
                   1
 Warning: Actual argument contains too few elements for dummy argument 'ay' (660/1100) at (1)
-../geotrack.f:2322.11:
+../Geotrack_scratch.f:1815.11:
 
  1002 TPRM=TPRM+LM(J)                                                   
            1
 Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
-../geotrack.f:2361.11:
+../Geotrack_scratch.f:1855.11:
 
  5001 TPRM=TPRM+LM(J)                                                   
            1
 Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
-../geotrack.f:2509.16:
+../Geotrack_scratch.f:2003.16:
 
       OFFX(KKZ)=OFFX(KKZ)+(SX1+SX1SYM)*BP(I,J)                          
                 1
 Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
-../geotrack.f:2510.16:
+../Geotrack_scratch.f:2004.16:
 
       OFFY(KKZ)=OFFY(KKZ)+(SY1+SY1SYM)*BP(I,J)                          
                 1
 Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
-../geotrack.f:2511.16:
+../Geotrack_scratch.f:2005.16:
 
       OFFZ(KKZ)=OFFZ(KKZ)+(SZ1+SZ1SYM)*BP(I,J)                          
                 1
 Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
-../geotrack.f:2512.17:
+../Geotrack_scratch.f:2006.17:
 
       OFFXY(KKZ)=OFFXY(KKZ)+(SXY+SXYSYM)*BP(I,J)                        
                  1
 Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
-../geotrack.f:2513.17:
+../Geotrack_scratch.f:2007.17:
 
       OFFXZ(KKZ)=OFFXZ(KKZ)+(SXZ+SXZSYM)*BP(I,J)                        
                  1
 Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
-../geotrack.f:2514.17:
+../Geotrack_scratch.f:2008.17:
 
       OFFYZ(KKZ)=OFFYZ(KKZ)+(SYZ+SYZSYM)*BP(I,J)                        
                  1
 Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
-../geotrack.f:2620.30:
+../Geotrack_scratch.f:2114.30:
 
      1(SU1SYM*BP(J1,J)+SU1*BP(J2,J))                                    
                               1
 Warning: Legacy Extension: REAL array index at (1)
-../geotrack.f:2622.30:
+../Geotrack_scratch.f:2116.30:
 
      1(SX1SYM*BP(J1,J)+SX1*BP(J2,J))                                    
                               1
 Warning: Legacy Extension: REAL array index at (1)
-../geotrack.f:2621.25:
+../Geotrack_scratch.f:2115.25:
 
       RESPX(ITIE,IP,KKZ)=RESPX(ITIE,IP,KKZ)+                            
                          1
 Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
-../geotrack.f:2624.30:
+../Geotrack_scratch.f:2118.30:
 
      1(SY1SYM*BP(J1,J)+SY1*BP(J2,J))                                    
                               1
 Warning: Legacy Extension: REAL array index at (1)
-../geotrack.f:2623.25:
+../Geotrack_scratch.f:2117.25:
 
       RESPY(ITIE,IP,KKZ)=RESPY(ITIE,IP,KKZ)+                            
                          1
 Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
-../geotrack.f:2626.30:
+../Geotrack_scratch.f:2120.30:
 
      1(SZ1SYM*BP(J1,J)+SZ1*BP(J2,J))                                    
                               1
 Warning: Legacy Extension: REAL array index at (1)
-../geotrack.f:2625.25:
+../Geotrack_scratch.f:2119.25:
 
       RESPZ(ITIE,IP,KKZ)=RESPZ(ITIE,IP,KKZ)+                            
                          1
 Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
-../geotrack.f:2628.30:
+../Geotrack_scratch.f:2122.30:
 
      1(SXYSYM*BP(J1,J)+SXY*BP(J2,J))                                    
                               1
 Warning: Legacy Extension: REAL array index at (1)
-../geotrack.f:2627.26:
+../Geotrack_scratch.f:2121.26:
 
       RESPXY(ITIE,IP,KKZ)=RESPXY(ITIE,IP,KKZ)+                          
                           1
 Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
-../geotrack.f:2630.30:
+../Geotrack_scratch.f:2124.30:
 
      1(SXZSYM*BP(J1,J)+SXZ*BP(J2,J))                                    
                               1
 Warning: Legacy Extension: REAL array index at (1)
-../geotrack.f:2629.26:
+../Geotrack_scratch.f:2123.26:
 
       RESPXZ(ITIE,IP,KKZ)=RESPXZ(ITIE,IP,KKZ)+                          
                           1
 Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
-../geotrack.f:2632.30:
+../Geotrack_scratch.f:2126.30:
 
      1(SYZSYM*BP(J1,J)+SYZ*BP(J2,J))                                    
                               1
 Warning: Legacy Extension: REAL array index at (1)
-../geotrack.f:2631.26:
+../Geotrack_scratch.f:2125.26:
 
       RESPYZ(ITIE,IP,KKZ)=RESPYZ(ITIE,IP,KKZ)+                          
                           1
 Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
-../geotrack.f:2914.9:
+../Geotrack_scratch.f:2408.9:
 
       J1=ABS(ICRB-J2)+1                                                 
          1
 Warning: Possible change of value in conversion from REAL(8) to INTEGER(4) at (1)
-../geotrack.f:2916.30:
+../Geotrack_scratch.f:2410.30:
 
      1(SU1SYM*BP(J1,J)+SU1*BP(J2,J))                                    
                               1
 Warning: Legacy Extension: REAL array index at (1)
-../geotrack.f:2918.30:
+../Geotrack_scratch.f:2412.30:
 
      1(SX1SYM*BP(J1,J)+SX1*BP(J2,J))                                    
                               1
 Warning: Legacy Extension: REAL array index at (1)
-../geotrack.f:2917.25:
+../Geotrack_scratch.f:2411.25:
 
       CRBPX(ICRB,IP,KKZ)=CRBPX(ICRB,IP,KKZ)+                            
                          1
 Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
-../geotrack.f:2920.30:
+../Geotrack_scratch.f:2414.30:
 
      1(SY1SYM*BP(J1,J)+SY1*BP(J2,J))                                    
                               1
 Warning: Legacy Extension: REAL array index at (1)
-../geotrack.f:2919.25:
+../Geotrack_scratch.f:2413.25:
 
       CRBPY(ICRB,IP,KKZ)=CRBPY(ICRB,IP,KKZ)+                            
                          1
 Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
-../geotrack.f:2922.30:
+../Geotrack_scratch.f:2416.30:
 
      1(SZ1SYM*BP(J1,J)+SZ1*BP(J2,J))                                    
                               1
 Warning: Legacy Extension: REAL array index at (1)
-../geotrack.f:2921.25:
+../Geotrack_scratch.f:2415.25:
 
       CRBPZ(ICRB,IP,KKZ)=CRBPZ(ICRB,IP,KKZ)+                            
                          1
 Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
-../geotrack.f:2924.30:
+../Geotrack_scratch.f:2418.30:
 
      1(SXYSYM*BP(J1,J)+SXY*BP(J2,J))                                    
                               1
 Warning: Legacy Extension: REAL array index at (1)
-../geotrack.f:2923.26:
+../Geotrack_scratch.f:2417.26:
 
       CRBPXY(ICRB,IP,KKZ)=CRBPXY(ICRB,IP,KKZ)+                          
                           1
 Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
-../geotrack.f:2926.30:
+../Geotrack_scratch.f:2420.30:
 
      1(SXZSYM*BP(J1,J)+SXZ*BP(J2,J))                                    
                               1
 Warning: Legacy Extension: REAL array index at (1)
-../geotrack.f:2925.26:
+../Geotrack_scratch.f:2419.26:
 
       CRBPXZ(ICRB,IP,KKZ)=CRBPXZ(ICRB,IP,KKZ)+                          
                           1
 Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
-../geotrack.f:2928.30:
+../Geotrack_scratch.f:2422.30:
 
      1(SYZSYM*BP(J1,J)+SYZ*BP(J2,J))                                    
                               1
 Warning: Legacy Extension: REAL array index at (1)
-../geotrack.f:2927.26:
+../Geotrack_scratch.f:2421.26:
 
       CRBPYZ(ICRB,IP,KKZ)=CRBPYZ(ICRB,IP,KKZ)+                          
                           1
 Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
-../geotrack.f:1294.13:
+../Geotrack_scratch.f:3355.13:
 
       SIGOCT=((-1.*(RXS(I,J,K)+RYS(I,J,K)+RZS(I,J,K)))+                 
              1
 Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
-../geotrack.f:1297.9:
+../Geotrack_scratch.f:3358.9:
 
       D2=-1.*RXS(I,J,K)+RZS(I,J,K)-((GV(K)+STA(J))*(1.-KNOT(K)))        
          1
 Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
-../geotrack.f:1298.9:
+../Geotrack_scratch.f:3359.9:
 
       D3=-1.*RYS(I,J,K)+RZS(I,J,K)-((GV(K)+STA(J))*(1.-KNOT(K)))        
          1
 Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
-../geotrack.f:1303.13:
+../Geotrack_scratch.f:3364.13:
 
       TAUOCT=ABS(SQRT(2.*J2/3.))                                        
              1
 Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
-../geotrack.f:1309.9:
+../Geotrack_scratch.f:3370.9:
 
       PO=(GV(K)+STA(J))*(1.+KNOT(K))/2.                                 
          1
 Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
-../geotrack.f:1310.9:
+../Geotrack_scratch.f:3371.9:
 
       QO=(GV(K)+STA(J))*(1.-KNOT(K))/2.                                 
          1
 Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
-../geotrack.f:1386.8:
+../Geotrack_scratch.f:3447.8:
 
       T=T+MR(I,J)/5.                                                    
         1
 Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
-../geotrack.f:3078.14:
+../Geotrack_scratch.f:2572.14:
 
  7292 E(NLAY)=KONE(I)*PATM*(THETAF(NLAY)/PATM)**KTWO(I)                 
               1
 Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
-../geotrack.f:3080.14:
+../Geotrack_scratch.f:2574.14:
 
  7293 E(NLAY)=PATM*(KONE(I)+KTWO(I)*(ALOG10(THETAF(NLAY)/PATM)))        
               1
 Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
-../geotrack.f:3082.14:
+../Geotrack_scratch.f:2576.14:
 
  7294 E(NLAY)=PATM*(KONE(I)+KTWO(I)*(THETAF(NLAY)/PATM))                
               1
 Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
-../geotrack.f:1831.5:
+../Geotrack_scratch.f:3247.5:
 
    78 COSX=SQRT(1.0-SINX2)                                              
      1
 Warning: Label 78 at (1) defined but not used
-../geotrack.f:1826.5:
+../Geotrack_scratch.f:3242.5:
 
    68 Y=-A(LM)/SQRT(A(LM)*A(LM)+X*X)                                    
      1
 Warning: Label 68 at (1) defined but not used
-../geotrack.f:1821.5:
+../Geotrack_scratch.f:3237.5:
 
    62 IF(ABS(A(LM))-THR)130,65,65                                       
      1
 Warning: Label 62 at (1) defined but not used
-../geotrack.f:3484.2:
+../Geotrack_scratch.f:3556.2:
 
 99    STOP                                                              
   1
 Warning: Label 99 at (1) defined but not used
-../geotrack.f:3447.13:
+../Geotrack_scratch.f:3527.13:
 
       SIGOCT=((-1.*(RXS(I,J,K)+RYS(I,J,K)+RZS(I,J,K)))+                 
              1
 Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
-../geotrack.f:3450.9:
+../Geotrack_scratch.f:3530.9:
 
       D2=-1.*RXS(I,J,K)+RZS(I,J,K)-((SIGV(K)+G(J))*(1.-KNOT(K)))        
          1
 Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
-../geotrack.f:3451.9:
+../Geotrack_scratch.f:3531.9:
 
       D3=-1.*RYS(I,J,K)+RZS(I,J,K)-((SIGV(K)+G(J))*(1.-KNOT(K)))        
          1
 Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
-../geotrack.f:3461.9:
+../Geotrack_scratch.f:3541.9:
 
       PO=(SIGV(K)+G(J))*(1.+KNOT(K))/2.                                 
          1
 Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
-../geotrack.f:3462.9:
+../Geotrack_scratch.f:3542.9:
 
       QO=(SIGV(K)+G(J))*(1.-KNOT(K))/2.                                 
          1
 Warning: Possible change of value in conversion from REAL(8) to REAL(4) at (1)
-../geotrack.f:3355.18:
+../Geotrack_scratch.f:2844.18:
 
       CALL TRIAXL(CRXS,CRYS,CRZS,CRXYS,CRXZS,CRYZS,MAXCOUT,C,1)         
                   1
 Warning: Actual argument contains too few elements for dummy argument 'rxs' (400/425) at (1)
-../geotrack.f:708.17:
-
-      COMMON/SIX/MINSEG,MAXSEG,MINTOUT,GAMMA(6),KNOT(6),SIGMAV(6)       
-                 1
-Warning: Padding of 4 bytes required before 'knot' in COMMON 'six' at (1); reorder elements or use -fno-align-commons
-../geotrack.f:1952.21:
-
-      COMMON /SCFBCI/ NS,PSI,NL                                         
-                     1
-Warning: Named COMMON block 'scfbci' at (1) shall be of the same size as elsewhere (12 vs 8 bytes)
-../geotrack.f:1954.19:
-
-      COMMON/THREE/TIEL,NSEG,TIESP,NTIES,NLAYER(3),STA(10)              
-                   1
-Warning: Named COMMON block 'three' at (1) shall be of the same size as elsewhere (68 vs 28 bytes)
-../geotrack.f:1945.18:
-
-      COMMON /TWO/KONE(6),KTWO(6),NSTEPS,NITER,GAMMA(6),KNOT(6),HHH(6), 
-                  1
-Warning: Named COMMON block 'two' at (1) shall be of the same size as elsewhere (288 vs 192 bytes)
-../geotrack.f:1941.34:
+../Geotrack_scratch.f:1435.34:
 
       DIMENSION RO(6),DS(9),EIGVEC(3,3),WK(3)                           
                                   1
 Warning: Unused variable 'eigvec' declared at (1)
-../geotrack.f:1941.42:
+../Geotrack_scratch.f:1435.42:
 
       DIMENSION RO(6),DS(9),EIGVEC(3,3),WK(3)                           
                                           1
 Warning: Unused variable 'wk' declared at (1)
-../geotrack.f:1671.42:
+../Geotrack_scratch.f:3013.42:
 
       SUBROUTINE USRAIL(NN,TS,TOL,RE,RI,RA,R,QXD,RM,PXD,RP,NDIM)        
                                           1
 Warning: Unused dummy argument 'ra' at (1)
-../geotrack.f:1645.41:
+../Geotrack_scratch.f:2987.41:
 
       SUBROUTINE SRAIL(NN,TS,TOL,RE,RI,RA,R,NDIM)                       
                                          1
 Warning: Unused dummy argument 'ra' at (1)
-../geotrack.f:1458.40:
+../Geotrack_scratch.f:3052.40:
 
       SUBROUTINE SOIL(M,N,MN,S,TS,RID,ND,NE,NZ,MD,IZ)                   
                                         1
 Warning: Unused dummy argument 'nd' at (1)
-../geotrack.f:1458.43:
+../Geotrack_scratch.f:3052.43:
 
       SUBROUTINE SOIL(M,N,MN,S,TS,RID,ND,NE,NZ,MD,IZ)                   
                                            1
 Warning: Unused dummy argument 'ne' at (1)
-../geotrack.f:1458.46:
+../Geotrack_scratch.f:3052.46:
 
       SUBROUTINE SOIL(M,N,MN,S,TS,RID,ND,NE,NZ,MD,IZ)                   
                                               1
 Warning: Unused dummy argument 'nz' at (1)
-../geotrack.f:1458.33:
+../Geotrack_scratch.f:3052.33:
 
       SUBROUTINE SOIL(M,N,MN,S,TS,RID,ND,NE,NZ,MD,IZ)                   
                                  1
 Warning: Unused dummy argument 'ts' at (1)
-../geotrack.f:903.19:
-
-      COMMON/BLOAD/KZ,NBRT,KR,ARG,XSIDE                                 
-                   1
-Warning: Named COMMON block 'bload' at (1) shall be of the same size as elsewhere (20 vs 24 bytes)
-../geotrack.f:910.21:
-
-      COMMON /OUTPUT/ IOPT                                              
-                     1
-Warning: Named COMMON block 'output' at (1) shall be of the same size as elsewhere (4 vs 12 bytes)
-../geotrack.f:912.21:
-
-      COMMON /SCFBCI/ NS,PSI                                            
-                     1
-Warning: Named COMMON block 'scfbci' at (1) shall be of the same size as elsewhere (8 vs 12 bytes)
-../geotrack.f:1054.21:
-
-      COMMON /SCFBCI/ NS,PSI                                            
-                     1
-Warning: Named COMMON block 'scfbci' at (1) shall be of the same size as elsewhere (8 vs 12 bytes)
-../geotrack.f: In function 'lac':
-../geotrack.f:2053:0: warning: 'tie' is used uninitialized in this function [-Wuninitialized]
+../Geotrack_scratch.f: In function 'lac':
+../Geotrack_scratch.f:1545:0: warning: 'tie' is used uninitialized in this function [-Wuninitialized]
     83 IF(TID.EQ.TIE) M=M/2
  ^
-../geotrack.f:2058:0: warning: 'rail' is used uninitialized in this function [-Wuninitialized]
+../Geotrack_scratch.f:1550:0: warning: 'rail' is used uninitialized in this function [-Wuninitialized]
        IF (RID.EQ.RAIL) N=N/2+1
  ^
-../geotrack.f: In function 'calcul':
-../geotrack.f:728:0: warning: 'fcp016' is used uninitialized in this function [-Wuninitialized]
-       ASTER=FCP016
- ^
-../geotrack.f:729:0: warning: 'fcp017' is used uninitialized in this function [-Wuninitialized]
-       PERD=FCP017
- ^
-Finished building: ../geotrack.f
+Finished building: ../Geotrack_scratch.f
  
-Building target: Geotrack_v1
+Building target: Geotrack_v2
 Invoking: GNU Fortran Linker
-gfortran  -o "Geotrack_v1"  ./geotrack.o   
-Finished building target: Geotrack_v1
+gfortran  -o "Geotrack_v2"  ./Geotrack_scratch.o   
+Finished building target: Geotrack_v2
  

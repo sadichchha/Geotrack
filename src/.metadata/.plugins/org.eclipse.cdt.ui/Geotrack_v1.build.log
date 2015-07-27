@@ -1,4 +1,4 @@
-11:53:19 **** Build of configuration Debug for project Geotrack_v1 ****
+16:45:33 **** Incremental Build of configuration Debug for project Geotrack_v1 ****
 make all 
 Building file: ../geotrack.f
 Invoking: GNU Fortran Compiler
@@ -490,5 +490,5 @@ gfortran  -o "Geotrack_v1"  ./geotrack.o
 Finished building target: Geotrack_v1
  
 
-11:53:23 Build Finished (took 3s.661ms)
+16:45:34 Build Finished (took 1s.534ms)
 
