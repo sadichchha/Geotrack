@@ -152,7 +152,18 @@ C     H(I) = ??
 C**********************************************************************/
 C     Opening an input file 'INFILE.DAT'
 C**********************************************************************/
-      OPEN(UNIT=2,FILE='INFILE.DAT',STATUS='OLD',FORM='FORMATTED')
+      CHARACTER(260) :: INFILE, OUTFILE, ARG
+
+      IF(iargc().NE.2) THEN
+        WRITE(*,*) 'Not enough input arguments'
+        WRITE(*,*) 'Usage geotrack <input file> <output filename>'
+        STOP
+      END IF
+
+      CALL getarg(1, INFILE)
+      CALL getarg(2, OUTFILE)
+
+      OPEN(UNIT=2,FILE=INFILE,STATUS='OLD',FORM='FORMATTED')
       OPEN(UNIT=1,STATUS='SCRATCH',FORM='FORMATTED')
 
 
@@ -215,6 +226,7 @@ C     *** Modified: converting real to integer (cast)
       PW3 = PWHL(3)
       PW4 = PWHL(4)
 
+
       LP1 = LP(1)
       LP2 = LP(2)
       LP3 = LP(3)
@@ -253,6 +265,8 @@ C     *** Modified: converting real to integer (cast)
  1050 CONTINUE
  1090 CONTINUE
 
+
+
 C**********************************************************************/
 C     Printing all the read variables
 C     Replacing 3 with * to write to console
@@ -286,6 +300,7 @@ C**********************************************************************/
       WRITE(*,3121) LP1, LP2, LP3, LP4, PW1, PW2, PW3, PW4, NS, LACOPT,
      1              NITER, INTERF, NOTHER, NOTENS, MINTOUT, MAXTOUT,
      1              MINSEG, MAXSEG, ITSTD, ITPRIN, ITRIAX
+
  3121 FORMAT(/,
      140X,'AXLE LOADS ON TIE NOS. ............',I2,2X,I2,2X,I2,
      1    2X,I2,//,
@@ -353,6 +368,7 @@ C     Type of stress dependent relationship for the soil layer
       WRITE(*,313)(RR(I), I=1,IR)
   313 FORMAT(11(5X,F6.2))
 
+
   330 WRITE(*,317)
   317 FORMAT(//40X,'DIFFERENT DEPTHS AT WHICH MODULI ARE COMPUTED'/)
       READ(2,*) (ZZ(I),I=2,IZ)
@@ -363,7 +379,6 @@ C     Type of stress dependent relationship for the soil layer
       WRITE(*,315) I, ZZ(KOZ)
   315 FORMAT(/40X,'Z(',I1,') = 'F6.2,' IN.')
   316 CONTINUE
-
 
       N = NS-1
       HHH(1) = HH(1)
@@ -380,6 +395,8 @@ C     ???????? ZZ(I+1) EFFECT OF POINTS BENEATH??????
      *GAMMA(I)*(ZZ(I+1)-HHH(I-1))
       DO 3030 I=1,IZ1
  3030 THETAI(I) = REAL(SIGMAV(I)+KNOT(I)*SIGMAV(I)+KNOT(I)*SIGMAV(I))
+
+
 
 C     *** Modified: REWIND 1 statement deleted from code
 C                   Replaced '&' with '*' when calling subroutines
