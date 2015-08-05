@@ -93,3 +93,231 @@ java.net.UnknownHostException: dev.eclipse.org
 
 !ENTRY org.eclipse.epp.logging.aeri.ui 2 6 2015-07-24 13:27:08.654
 !MESSAGE Failed to determine ETAG for remote problems database. Stopping update. Version: 1.0.0.v20150617-0732
+
+!ENTRY org.eclipse.cdt.ui 2 0 2015-07-27 13:27:14.519
+!MESSAGE Default project not found in New C/C++ Project Wizard
+
+!ENTRY org.eclipse.cdt.core 1 0 2015-07-27 13:28:19.071
+!MESSAGE Indexed 'Geotrack_v3' (0 sources, 0 headers) in 0.001 sec: 0 declarations; 0 references; 0 unresolved inclusions; 0 syntax errors; 0 unresolved names (0%)
+!SESSION 2015-07-27 13:44:18.458 -----------------------------------------------
+eclipse.buildId=4.5.0.I20150603-2000
+java.version=1.8.0_51
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.parallel.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.parallel.product
+
+!ENTRY org.eclipse.egit.ui 2 0 2015-07-27 13:44:48.730
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Sadichchha'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.debug.ui 4 0 2015-07-27 13:45:03.023
+!MESSAGE Tab group extension: org.eclipse.cdt.launch.applicationProfileLaunchTabGroup for type org.eclipse.cdt.launch.applicationLaunchType for the [profile] mode has been replaced by extension: org.eclipse.cdt.launch.applicationProfileLaunchTabGroup
+!SESSION 2015-08-02 11:51:19.779 -----------------------------------------------
+eclipse.buildId=4.5.0.I20150603-2000
+java.version=1.8.0_51
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.parallel.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.parallel.product
+
+!ENTRY org.eclipse.egit.ui 2 0 2015-08-02 11:52:35.771
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Sadichchha'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.debug.ui 4 0 2015-08-02 11:57:47.308
+!MESSAGE Tab group extension: org.eclipse.cdt.launch.applicationProfileLaunchTabGroup for type org.eclipse.cdt.launch.applicationLaunchType for the [profile] mode has been replaced by extension: org.eclipse.cdt.launch.applicationProfileLaunchTabGroup
+!SESSION 2015-08-04 12:22:39.190 -----------------------------------------------
+eclipse.buildId=4.5.0.I20150603-2000
+java.version=1.8.0_51
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.parallel.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.parallel.product
+
+!ENTRY org.eclipse.egit.ui 2 0 2015-08-04 12:23:19.242
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Sadichchha'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.debug.ui 4 0 2015-08-04 12:23:33.217
+!MESSAGE Tab group extension: org.eclipse.cdt.launch.applicationProfileLaunchTabGroup for type org.eclipse.cdt.launch.applicationLaunchType for the [profile] mode has been replaced by extension: org.eclipse.cdt.launch.applicationProfileLaunchTabGroup
+
+!ENTRY org.eclipse.e4.ui.workbench.renderers.swt 4 2 2015-08-04 12:23:33.493
+!MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.e4.ui.workbench.renderers.swt".
+!STACK 0
+org.eclipse.e4.core.di.InjectionException: java.lang.IllegalAccessException: Class org.eclipse.e4.core.internal.di.MethodRequestor can not access a member of class org.eclipse.ui.internal.handlers.E4HandlerProxy with modifiers ""
+	at org.eclipse.e4.core.internal.di.MethodRequestor.execute(MethodRequestor.java:60)
+	at org.eclipse.e4.core.internal.di.InjectorImpl.invokeUsingClass(InjectorImpl.java:252)
+	at org.eclipse.e4.core.internal.di.InjectorImpl.invoke(InjectorImpl.java:234)
+	at org.eclipse.e4.core.contexts.ContextInjectionFactory.invoke(ContextInjectionFactory.java:132)
+	at org.eclipse.e4.core.commands.internal.HandlerServiceHandler.setEnabled(HandlerServiceHandler.java:80)
+	at org.eclipse.core.commands.Command.setEnabled(Command.java:875)
+	at org.eclipse.e4.core.commands.internal.HandlerServiceImpl.canExecute(HandlerServiceImpl.java:179)
+	at org.eclipse.e4.ui.workbench.renderers.swt.HandledContributionItem.canExecuteItem(HandledContributionItem.java:813)
+	at org.eclipse.e4.ui.workbench.renderers.swt.HandledContributionItem.access$1(HandledContributionItem.java:802)
+	at org.eclipse.e4.ui.workbench.renderers.swt.HandledContributionItem$3.run(HandledContributionItem.java:167)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.e4.ui.workbench.renderers.swt.HandledContributionItem.updateItemEnablement(HandledContributionItem.java:198)
+	at org.eclipse.e4.ui.workbench.renderers.swt.ToolItemUpdater.updateContributionItems(ToolItemUpdater.java:37)
+	at org.eclipse.e4.ui.workbench.renderers.swt.ToolBarManagerRenderer$3.changed(ToolBarManagerRenderer.java:360)
+	at org.eclipse.e4.core.internal.contexts.TrackableComputationExt.update(TrackableComputationExt.java:114)
+	at org.eclipse.e4.core.internal.contexts.EclipseContext.processScheduled(EclipseContext.java:341)
+	at org.eclipse.e4.core.internal.contexts.EclipseContext.set(EclipseContext.java:356)
+	at org.eclipse.ui.internal.services.EvaluationService.contextEvaluate(EvaluationService.java:139)
+	at org.eclipse.ui.internal.services.EvaluationService.addSourceProvider(EvaluationService.java:180)
+	at org.eclipse.debug.internal.ui.contexts.DebugContextSourceProvider.<init>(DebugContextSourceProvider.java:51)
+	at org.eclipse.debug.internal.ui.contexts.DebugWindowContextService.<init>(DebugWindowContextService.java:62)
+	at org.eclipse.debug.internal.ui.contexts.DebugContextManager.createService(DebugContextManager.java:163)
+	at org.eclipse.debug.internal.ui.contexts.DebugContextManager.getContextService(DebugContextManager.java:221)
+	at org.eclipse.debug.internal.ui.views.ViewContextService.<init>(ViewContextService.java:627)
+	at org.eclipse.debug.internal.ui.views.ViewContextManager.windowOpened(ViewContextManager.java:93)
+	at org.eclipse.debug.internal.ui.views.ViewContextManager.<init>(ViewContextManager.java:55)
+	at org.eclipse.debug.internal.ui.views.ViewContextManager.getDefault(ViewContextManager.java:44)
+	at org.eclipse.debug.internal.ui.contexts.DebugContextManager.getDefault(DebugContextManager.java:150)
+	at org.eclipse.debug.ui.DebugUITools.getDebugContextManager(DebugUITools.java:1076)
+	at org.eclipse.debug.internal.ui.sourcelookup.SourceLookupService.<init>(SourceLookupService.java:40)
+	at org.eclipse.debug.internal.ui.sourcelookup.SourceLookupManager.windowOpened(SourceLookupManager.java:91)
+	at org.eclipse.debug.internal.ui.sourcelookup.SourceLookupManager.<init>(SourceLookupManager.java:41)
+	at org.eclipse.debug.internal.ui.sourcelookup.SourceLookupManager.getDefault(SourceLookupManager.java:53)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin.initializeLaunchListeners(DebugUIPlugin.java:935)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin.launchAdded(DebugUIPlugin.java:920)
+	at org.eclipse.debug.internal.core.LaunchManager$LaunchNotifier.run(LaunchManager.java:451)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.debug.internal.core.LaunchManager$LaunchNotifier.notify(LaunchManager.java:438)
+	at org.eclipse.debug.internal.core.LaunchManager.fireUpdate(LaunchManager.java:1048)
+	at org.eclipse.debug.internal.core.LaunchManager.addLaunch(LaunchManager.java:708)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:834)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:739)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin.buildAndLaunch(DebugUIPlugin.java:1039)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin$8.run(DebugUIPlugin.java:1256)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+Caused by: java.lang.IllegalAccessException: Class org.eclipse.e4.core.internal.di.MethodRequestor can not access a member of class org.eclipse.ui.internal.handlers.E4HandlerProxy with modifiers ""
+	at sun.reflect.Reflection.ensureMemberAccess(Unknown Source)
+	at java.lang.reflect.AccessibleObject.slowCheckMemberAccess(Unknown Source)
+	at java.lang.reflect.AccessibleObject.checkAccess(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.e4.core.internal.di.MethodRequestor.execute(MethodRequestor.java:56)
+	... 44 more
+
+!ENTRY org.eclipse.e4.ui.workbench 4 0 2015-08-04 12:23:33.529
+!MESSAGE Internal error during tool item enablement updating, this is only logged once per tool item.
+!STACK 0
+org.eclipse.e4.core.di.InjectionException: java.lang.IllegalAccessException: Class org.eclipse.e4.core.internal.di.MethodRequestor can not access a member of class org.eclipse.ui.internal.handlers.E4HandlerProxy with modifiers ""
+	at org.eclipse.e4.core.internal.di.MethodRequestor.execute(MethodRequestor.java:60)
+	at org.eclipse.e4.core.internal.di.InjectorImpl.invokeUsingClass(InjectorImpl.java:252)
+	at org.eclipse.e4.core.internal.di.InjectorImpl.invoke(InjectorImpl.java:234)
+	at org.eclipse.e4.core.contexts.ContextInjectionFactory.invoke(ContextInjectionFactory.java:132)
+	at org.eclipse.e4.core.commands.internal.HandlerServiceHandler.setEnabled(HandlerServiceHandler.java:80)
+	at org.eclipse.core.commands.Command.setEnabled(Command.java:875)
+	at org.eclipse.e4.core.commands.internal.HandlerServiceImpl.canExecute(HandlerServiceImpl.java:179)
+	at org.eclipse.e4.ui.workbench.renderers.swt.HandledContributionItem.canExecuteItem(HandledContributionItem.java:813)
+	at org.eclipse.e4.ui.workbench.renderers.swt.HandledContributionItem.access$1(HandledContributionItem.java:802)
+	at org.eclipse.e4.ui.workbench.renderers.swt.HandledContributionItem$3.run(HandledContributionItem.java:167)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.e4.ui.workbench.renderers.swt.HandledContributionItem.updateItemEnablement(HandledContributionItem.java:198)
+	at org.eclipse.e4.ui.workbench.renderers.swt.ToolItemUpdater.updateContributionItems(ToolItemUpdater.java:37)
+	at org.eclipse.e4.ui.workbench.renderers.swt.ToolBarManagerRenderer$3.changed(ToolBarManagerRenderer.java:360)
+	at org.eclipse.e4.core.internal.contexts.TrackableComputationExt.update(TrackableComputationExt.java:114)
+	at org.eclipse.e4.core.internal.contexts.EclipseContext.processScheduled(EclipseContext.java:341)
+	at org.eclipse.e4.core.internal.contexts.EclipseContext.set(EclipseContext.java:356)
+	at org.eclipse.ui.internal.services.EvaluationService.contextEvaluate(EvaluationService.java:139)
+	at org.eclipse.ui.internal.services.EvaluationService.addSourceProvider(EvaluationService.java:180)
+	at org.eclipse.debug.internal.ui.contexts.DebugContextSourceProvider.<init>(DebugContextSourceProvider.java:51)
+	at org.eclipse.debug.internal.ui.contexts.DebugWindowContextService.<init>(DebugWindowContextService.java:62)
+	at org.eclipse.debug.internal.ui.contexts.DebugContextManager.createService(DebugContextManager.java:163)
+	at org.eclipse.debug.internal.ui.contexts.DebugContextManager.getContextService(DebugContextManager.java:221)
+	at org.eclipse.debug.internal.ui.views.ViewContextService.<init>(ViewContextService.java:627)
+	at org.eclipse.debug.internal.ui.views.ViewContextManager.windowOpened(ViewContextManager.java:93)
+	at org.eclipse.debug.internal.ui.views.ViewContextManager.<init>(ViewContextManager.java:55)
+	at org.eclipse.debug.internal.ui.views.ViewContextManager.getDefault(ViewContextManager.java:44)
+	at org.eclipse.debug.internal.ui.contexts.DebugContextManager.getDefault(DebugContextManager.java:150)
+	at org.eclipse.debug.ui.DebugUITools.getDebugContextManager(DebugUITools.java:1076)
+	at org.eclipse.debug.internal.ui.sourcelookup.SourceLookupService.<init>(SourceLookupService.java:40)
+	at org.eclipse.debug.internal.ui.sourcelookup.SourceLookupManager.windowOpened(SourceLookupManager.java:91)
+	at org.eclipse.debug.internal.ui.sourcelookup.SourceLookupManager.<init>(SourceLookupManager.java:41)
+	at org.eclipse.debug.internal.ui.sourcelookup.SourceLookupManager.getDefault(SourceLookupManager.java:53)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin.initializeLaunchListeners(DebugUIPlugin.java:935)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin.launchAdded(DebugUIPlugin.java:920)
+	at org.eclipse.debug.internal.core.LaunchManager$LaunchNotifier.run(LaunchManager.java:451)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.debug.internal.core.LaunchManager$LaunchNotifier.notify(LaunchManager.java:438)
+	at org.eclipse.debug.internal.core.LaunchManager.fireUpdate(LaunchManager.java:1048)
+	at org.eclipse.debug.internal.core.LaunchManager.addLaunch(LaunchManager.java:708)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:834)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:739)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin.buildAndLaunch(DebugUIPlugin.java:1039)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin$8.run(DebugUIPlugin.java:1256)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+Caused by: java.lang.IllegalAccessException: Class org.eclipse.e4.core.internal.di.MethodRequestor can not access a member of class org.eclipse.ui.internal.handlers.E4HandlerProxy with modifiers ""
+	at sun.reflect.Reflection.ensureMemberAccess(Unknown Source)
+	at java.lang.reflect.AccessibleObject.slowCheckMemberAccess(Unknown Source)
+	at java.lang.reflect.AccessibleObject.checkAccess(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.e4.core.internal.di.MethodRequestor.execute(MethodRequestor.java:56)
+	... 44 more
+
+!ENTRY org.eclipse.equinox.p2.transport.ecf 4 1006 2015-08-05 10:00:01.215
+!MESSAGE Unknown Host: http://download.eclipse.org/tools/ptp/updates/mars/content.xml
+!STACK 0
+java.net.UnknownHostException: download.eclipse.org
+	at java.net.InetAddress.getAllByName0(Unknown Source)
+	at java.net.InetAddress.getAllByName(Unknown Source)
+	at java.net.InetAddress.getAllByName(Unknown Source)
+	at org.apache.http.impl.conn.SystemDefaultDnsResolver.resolve(SystemDefaultDnsResolver.java:44)
+	at org.apache.http.impl.conn.DefaultClientConnectionOperator.resolveHostname(DefaultClientConnectionOperator.java:259)
+	at org.apache.http.impl.conn.DefaultClientConnectionOperator.openConnection(DefaultClientConnectionOperator.java:159)
+	at org.apache.http.impl.conn.ManagedClientConnectionImpl.open(ManagedClientConnectionImpl.java:304)
+	at org.apache.http.impl.client.DefaultRequestDirector.tryConnect(DefaultRequestDirector.java:611)
+	at org.apache.http.impl.client.DefaultRequestDirector.execute(DefaultRequestDirector.java:446)
+	at org.apache.http.impl.client.AbstractHttpClient.doExecute(AbstractHttpClient.java:863)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:82)
+	at org.eclipse.ecf.provider.filetransfer.httpclient4.HttpClientFileSystemBrowser.runRequest(HttpClientFileSystemBrowser.java:259)
+	at org.eclipse.ecf.provider.filetransfer.browse.AbstractFileSystemBrowser$DirectoryJob.run(AbstractFileSystemBrowser.java:69)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.eclipse.equinox.p2.transport.ecf 4 1006 2015-08-05 10:00:01.493
+!MESSAGE Unknown Host: http://download.eclipse.org/eclipse/updates/4.5/compositeContent.xml
+!STACK 0
+java.net.UnknownHostException: download.eclipse.org
+	at java.net.InetAddress.getAllByName0(Unknown Source)
+	at java.net.InetAddress.getAllByName(Unknown Source)
+	at java.net.InetAddress.getAllByName(Unknown Source)
+	at org.apache.http.impl.conn.SystemDefaultDnsResolver.resolve(SystemDefaultDnsResolver.java:44)
+	at org.apache.http.impl.conn.DefaultClientConnectionOperator.resolveHostname(DefaultClientConnectionOperator.java:259)
+	at org.apache.http.impl.conn.DefaultClientConnectionOperator.openConnection(DefaultClientConnectionOperator.java:159)
+	at org.apache.http.impl.conn.ManagedClientConnectionImpl.open(ManagedClientConnectionImpl.java:304)
+	at org.apache.http.impl.client.DefaultRequestDirector.tryConnect(DefaultRequestDirector.java:611)
+	at org.apache.http.impl.client.DefaultRequestDirector.execute(DefaultRequestDirector.java:446)
+	at org.apache.http.impl.client.AbstractHttpClient.doExecute(AbstractHttpClient.java:863)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:82)
+	at org.eclipse.ecf.provider.filetransfer.httpclient4.HttpClientFileSystemBrowser.runRequest(HttpClientFileSystemBrowser.java:259)
+	at org.eclipse.ecf.provider.filetransfer.browse.AbstractFileSystemBrowser$DirectoryJob.run(AbstractFileSystemBrowser.java:69)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.eclipse.equinox.p2.transport.ecf 4 1006 2015-08-05 10:00:02.786
+!MESSAGE Unknown Host: http://download.eclipse.org/releases/mars/compositeContent.xml
+!STACK 0
+java.net.UnknownHostException: download.eclipse.org
+	at java.net.InetAddress.getAllByName0(Unknown Source)
+	at java.net.InetAddress.getAllByName(Unknown Source)
+	at java.net.InetAddress.getAllByName(Unknown Source)
+	at org.apache.http.impl.conn.SystemDefaultDnsResolver.resolve(SystemDefaultDnsResolver.java:44)
+	at org.apache.http.impl.conn.DefaultClientConnectionOperator.resolveHostname(DefaultClientConnectionOperator.java:259)
+	at org.apache.http.impl.conn.DefaultClientConnectionOperator.openConnection(DefaultClientConnectionOperator.java:159)
+	at org.apache.http.impl.conn.ManagedClientConnectionImpl.open(ManagedClientConnectionImpl.java:304)
+	at org.apache.http.impl.client.DefaultRequestDirector.tryConnect(DefaultRequestDirector.java:611)
+	at org.apache.http.impl.client.DefaultRequestDirector.execute(DefaultRequestDirector.java:446)
+	at org.apache.http.impl.client.AbstractHttpClient.doExecute(AbstractHttpClient.java:863)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:82)
+	at org.eclipse.ecf.provider.filetransfer.httpclient4.HttpClientFileSystemBrowser.runRequest(HttpClientFileSystemBrowser.java:259)
+	at org.eclipse.ecf.provider.filetransfer.browse.AbstractFileSystemBrowser$DirectoryJob.run(AbstractFileSystemBrowser.java:69)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)

@@ -1,0 +1,15 @@
+17:07:18 **** Incremental Build of configuration Debug for project Geotrack_v3 ****
+make all 
+Building file: ../Sadichchha_Geotrack.f
+Invoking: GNU Fortran Compiler
+gfortran -std=f95 -funderscoring -O0 -g -Wall -c -fmessage-length=0 -o "Sadichchha_Geotrack.o" "../Sadichchha_Geotrack.f"
+Finished building: ../Sadichchha_Geotrack.f
+ 
+Building target: Geotrack_v3
+Invoking: GNU Fortran Linker
+gfortran  -o "Geotrack_v3"  ./Sadichchha_Geotrack.o   
+Finished building target: Geotrack_v3
+ 
+
+17:07:21 Build Finished (took 2s.435ms)
+

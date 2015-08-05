@@ -1,0 +1,633 @@
+      PROGRAM Sadichchha_Geotrack
+
+C**********************************************************************/
+C     Variable Declarations
+C**********************************************************************/
+      ! Constant Declarations
+      INTEGER, PARAMETER :: MAX_NS  = 7,  ! Maximum number of layers (MULTA)
+     *                      NOAXLES = 100
+      CHARACTER(15) :: INPUT_FILE  = 'INFILE.DAT'
+      !CHARACTER(15) :: OUTPUT_FILE = 'OUTFILE.DAT'
+
+
+      CHARACTER(80) :: TITLE
+
+      INTEGER NS, LACOPT, NITER, INTERF, NOTENS, NOTHER, IOPT,
+     *        CRIBOPT,ITOPT, I, NAXLES, IZ, KTYPE(MAX_NS), NEWFLAG,
+     *        OFFSET
+
+      REAL E(MAX_NS),VRAT(MAX_NS), HH(7), GAMMA(MAX_NS),
+     *     KNOT(MAX_NS), KONE(MAX_NS), KTWO(MAX_NS),
+     *     TIEL, TIESP, TIEWD, TA, TE, TI, TWT, MI, WI, RA, RE, RI,
+     *     RWT, STIF1, LP(NOAXLES), PWHL(NOAXLES), MINTOUT, MAXTOUT,
+     *     MAXCOUT, MINSEG, MAXSEG, ITSTD, ITPRIN, ITRIAX, ICSTD,
+     *     ICPRIN, ICTRIX, NP, WGT, RR(110), ZZ(20), HHH(6), SIGMAV(6),
+     *     THETAI(6), ANGNEW(60), H(6)
+
+      LOGICAL :: LOOP_EXIT = .FALSE.
+
+C**********************************************************
+      !COMMON BLOCKS FOR SUBROUINES
+      COMMON /SCERJ_GL/ E, VRAT, HH, WGT, IZ, IR, RR, ZZ, NS, PSI
+      COMMON /CALCUL_GL/ TITLE, H, ANGNEW, NEWFLAG, CRIBOPT, NITER,
+     *                   NSTEPS, TIESP, TIEL, OFFSET
+
+C**********************************************************************/
+      ! Opening input file
+      OPEN(UNIT=2, FILE=INPUT_FILE, STATUS='OLD', FORM='FORMATTED')
+
+      READ(2, '(A)') TITLE
+      READ(2,*) NS, LACOPT, NITER, INTERF, NOTENS, NOTHER, IOPT,
+     *          CRIBOPT,ITOPT
+      READ(2,*) (E(I),VRAT(I), HH(I), GAMMA(I), KNOT(I), KTYPE(I),
+     *           KONE(I), KTWO(I), I = 1, NS)
+      READ(2,*) TIEL, TIESP, TIEWD
+      READ(2,*) TA, TE, TI, TWT
+      READ(2,*) MI, WI
+      READ(2,*) RA, RE, RI, RWT
+      READ(2,*) STIF1
+      READ(2,*) NAXLES
+      READ(2,*) (LP(I), PWHL(I), I = 1, NAXLES)
+      READ(2,*) MINTOUT, MAXTOUT, MAXCOUT, MINSEG, MAXSEG, ITSTD,
+     *          ITPRIN, ITRIAX
+
+      IF(CRIBOPT.EQ.1) READ(2,*) ICSTD, ICPRIN, ICTRIX
+
+      IZ = NS+1
+      NP = (IZ-1) * NS
+      WGT = 1.0
+
+      ! Converting cubic inches to cubic feet
+      DO I = 1, NS
+        GAMMA(I) = GAMMA(I)/1728.
+      END DO
+
+      NSEG  = 10
+      NTIES = 11
+
+      NTIES   = INT(NTIES/2. + 1)
+      NPOINTS = NTIES*2 -1
+      SEGL    = TIEL/NSEG
+      PSI     = 1.0/ (TIEWD*SEGL)
+      PATM    = 14.7
+      REI     = RE*RI/1000.
+      TEI     = TE*TI/1000.
+
+      DO I = 1, NAXLES
+        PWHL(I) = PWHL(I)*1000.
+      END DO
+
+      PR     = PWHL(1)
+      STATIC = (TWT+(2.*RWT*TIESP/36.))/(TIEL*TIEWD)
+      IR     = NPOINTS*NSEG
+      XINCR  = SEGL
+      YINCR  = TIESP/2.0
+      II     = IR+1
+      IIZ    = IZ+1
+
+      X  = 0
+      L1 = 0
+      DO J = 1, NSEG
+        IF(J.NE.1) X = X + XINCR
+        Y = 0.
+        DO I = 1, NPOINTS
+            L1 = L1 +1
+            IF(L1.EQ.1) THEN
+                RR(L1) = 0.
+            ELSE
+                IF(I.NE.1) THEN
+                    Y = Y + YINCR
+                END IF
+                RR(L1) = SQRT(X**2+Y**2)
+            END IF
+        END DO
+      END DO
+
+      WRITE(*,1)
+    1 FORMAT(50X,'PROGRAM GEOTRACK II',/,
+     *       40X,'NONLINEAR ELASTIC MULTI-LAYER TRACK ANALYSIS',/)
+
+      WRITE(*,2) TITLE
+    2 FORMAT(45X, A)
+      WRITE(*,*) 'CHECK CHECK 1', E
+
+      WRITE(*,3) TIEL, NSEG, TIESP, TIEWD, TA, TWT, TEI, WI, RA, RWT,
+     *            REI, STIF1, NAXLES
+    3 FORMAT(/,40X,'TIE LENGTH ........................',F5.1,
+     *2X,'IN.',/,
+     *40X,'NO. OF SEGMENTS PER TIE ...........',I2,//,
+     *40X,'TIE SPACING .......................',F5.1,2X,'IN.',/,
+     *40X,'TIE WIDTH .........................',F5.1,2X,'IN.',/,
+     *40X,'TIE AREA ..........................',F5.1,2X,'IN.SQ.',/,
+     *40X,'TIE WEIGHT ........................',F6.1,2X,'LBS.',/,
+     *40X,'TIE EI ............................',F9.1,2X,'K-IN.SQ.',/,
+     *40X,'RAIL GAUGE ........................',F6.2,2X,'IN.',/,
+     *40X,'RAIL AREA .........................',F6.2,2X,'IN.SQ.',/,
+     *40X,'RAIL WEIGHT .......................',F5.1,2X,'LBS./YARD',/,
+     *40X,'RAIL EI ...........................',F10.1,2X,'K-IN.SQ.',/,
+     *40X,'RAIL FASTENER STIFFNESS ...........',F10.1,2X,
+     *'LB. PER IN.',/,
+     *40X,'NO. OF AXLE LOADS .................',I2,/)
+
+      WRITE(*,4) LP(1), LP(2), LP(3), LP(4),PWHL(1)/1000.,
+     *            PWHL(2)/1000.,PWHL(3)/1000.,PWHL(4)/1000.,
+     *            NS, LACOPT, NITER, INTERF, NOTHER, NOTENS, MINTOUT,
+     *            MAXTOUT, MINSEG, MAXSEG, ITSTD, ITPRIN, ITRIAX
+    4 FORMAT(40X,'AXLE LOADS ON TIE NOS. ............',F5.1,2X,F5.1,2X,
+     *      F5.1,2X,F5.1,/,
+     *      40X,'WHEEL LOAD/AXLE (KIPS) ............ ',F5.2,2X,
+     *      F5.2,2X,F5.2,2X,F5.2,/,
+     *      40X,'NO. OF SOIL LAYERS ................',I2,/,
+     *      40X,'OPTION FOR COEFFICIENTS ...........',I2,/,
+     *      40X,'NO. OF ITERATIONS .................',I2,/,
+     *      40X,'CALCULATE AT OTHER DEPTH POINTS ...',I2,/,
+     *      40X,'CALCULATE AT OFFSET LOCATIONS .....',I2,/,
+     *      40X,'CONSIDER TIE/BALLAST SEPARATION ...',I2,/,
+     *      40X,'FIRST TIE OUTPUT ..................',F5.1,/,
+     *      40X,'LAST TIE OUTPUT ...................',F5.1,/,
+     *      40X,'FIRST TIE SEGMENT OUTPUT ..........',F5.1,/,
+     *      40X,'LAST TIE SEGMENT OUTPUT ...........',F5.1,/,
+     *      40X,'PRINT STANDARD SOIL OUTPUT ........',F5.1,/,
+     *      40X,'PRINT PRINCIPLE STRESSES ..........',F5.1,/,
+     *      40X,'PRINT EQUIVALENT TRIAXIAL DATA ....',F5.1,/)
+
+      WRITE(*,5)
+    5 FORMAT(/32X,'LAYER     E(I)-K/IN.SQ.   VRAT(I)    DEPTH-IN
+     *GAMMA-PCF  KNOT'/)
+
+      WRITE(*,6)(I, E(I), VRAT(I), HH(I), GAMMA(I), KNOT(I), I=1,NS)
+    6 FORMAT(33X,I2,7X,F10.2,1X,F10.2,3X,2F10.2,1X,F10.2)
+
+      WRITE(*,7)
+    7 FORMAT(/32X,'LAYER',5X,'KTYPE',26X,'MODULUS DESCRIPTION',/)
+
+      ! Type of stress dependent relationship for the soil layer
+      DO I=1,NS
+          IF(KTYPE(I).EQ.0) THEN
+            WRITE(*,8) I, KTYPE(I)
+          ELSE IF(KTYPE(I).EQ.1) THEN
+            WRITE(*,9) I, KTYPE(I), KONE(I), KTWO(I)
+          ELSE IF(KTYPE(I).EQ.2) THEN
+            WRITE(*,10) I, KTYPE(I), KONE(I), KTWO(I)
+          ELSE IF(KTYPE(I).EQ.3) THEN
+            WRITE(*,11) I, KTYPE(I), KONE(I), KTWO(I)
+          ELSE IF(KTYPE(I).EQ.4) THEN
+            WRITE(*,12) I, KTYPE(I)
+          ELSE IF(KTYPE(I).EQ.5) THEN
+            WRITE(*,13) I, KTYPE(I)
+          ELSE IF(KTYPE(I).EQ.6) THEN
+            WRITE(*,14) I, KTYPE(I)
+          ELSE IF(KTYPE(I).EQ.7) THEN
+            WRITE(*,15) I, KTYPE(I)
+          ELSE IF(KTYPE(I).EQ.8) THEN
+            WRITE(*,16) I, KTYPE(I)
+          END IF
+      END DO
+
+    8 FORMAT(33X,I2,8X,I2,10X,'CONSTANT')
+    9 FORMAT(33X,I2,8X,I2,10X,'LOG E - LOG BULK STRESS  K1 =',F8.2,
+     *       5X,'K2 = ',F8.4)
+   10 FORMAT(33X,I2,8X,I2,10X,'E - LOG BULK STRESS      K1 =',F8.2,
+     *       5X,'K2 = ',F8.4)
+   11 FORMAT(33X,I2,8X,I2,10X,'E - BULK STRESS          K1 =',F8.2,
+     *       5X,'K2 = ',F8.4)
+   12 FORMAT(33X,I2,8X,I2,10X,'EXPERIMENTAL SHEAR STRESS REVERSAL')
+   13 FORMAT(33X,I2,8X,I2,10X,
+     *       'E - DEVIATOR STRESS FOR STIFF COHESIVE SUBGRADE')
+   14 FORMAT(33X,I2,8X,I2,10X,
+     *       'E - DEVIATOR STRESS FOR MEDIUM COHESIVE SUBGRADE')
+   15 FORMAT(33X,I2,8X,I2,10X,
+     *       'E - DEVIATOR STRESS FOR SOFT COHESIVE SUBGRADE')
+   16 FORMAT(33X,I2,8X,I2,10X,
+     *       'E - DEVIATOR STRESS FOR VERY SOFT COHESIVE SUBGRADE')
+
+      IF(IOPT.NE.0) THEN
+        WRITE(*,17)
+   17   FORMAT(/50X,'RADIUS FROM ORIGIN',5X,'IN.'/)
+
+        WRITE(*,18) (RR(I), I = 1, IR)
+   18   FORMAT(11(5X,F6.2))
+      END IF
+
+      WRITE(*,19)
+   19 FORMAT(/40X,'DIFFERENT DEPTHS AT WHICH MODULI ARE COMPUTED'/)
+
+      ZZ(:) = 0.
+      READ(2,*) (ZZ(I),I=2,IZ)
+
+      DO I = 1,NS
+        KOZ = I+1
+        WRITE(*,20) I, ZZ(KOZ)
+   20   FORMAT(50X,'Z(',I1,') = ',F6.2,' IN.')
+      END DO
+
+      N = NS - 1
+      HHH(1) = HH(1)
+      IF(N.GE.2) THEN
+        DO I = 2,N
+            HHH(I) = HHH(I-1) + HH(I)
+        END DO
+      END IF
+
+      SIGMAV(1) = GAMMA(1)*ZZ(2) + STATIC
+      IZ1 = IZ-1
+
+      DO I = 2,IZ1
+C     ???????? ZZ(I+1) EFFECT OF POINTS BENEATH??????
+      SIGMAV(I) = SIGMAV(I-1) + GAMMA(I-1) * (HHH(I-1)-ZZ(I)) +
+     *            GAMMA(I) * (ZZ(I+1)-HHH(I-1))
+      END DO
+
+      DO I = 1,IZ1
+        THETAI(I) = SIGMAV(I) + KNOT(I) * SIGMAV(I) + KNOT(I)*SIGMAV(I)
+      END DO
+
+      NSTEPS = 0
+      CALL SCERJ
+      IF(NITER.NE.0) THEN
+          DO I = 1,NITER
+              NSTEPS = I-1
+              REWIND 1
+              CALL SCERJ
+              CALL CALCUL
+          END DO
+      ELSE
+        CALL SCERJ
+        CALL CALCUL
+      END IF
+      WRITE(*,*) 'NPT', NPT
+      STOP
+      IF((INTERF.EQ.1).OR.(NOTHER.EQ.1)) THEN
+        IF((INTERF.EQ.1).AND.((NOTHER.EQ.1).OR.(NOTHER.EQ.0))) THEN
+            DO
+                READ(2,*,END=99) NPT
+                IF(NPT.EQ.9999) THEN
+                    LOOP_EXIT = .TRUE.
+                    EXIT
+                END IF
+
+                ZZ(1) = 0.
+                DO I=1,NPT
+                    KOZ = I+1
+                    READ(2,*) ZZ(KOZ),KNOT(I)
+                END DO
+                IZ = NPT + 1
+                NL = NPT
+                NP = (IZ-1) * NSEG
+                REWIND 1
+                CALL SCERJ
+                CALL CALCUL
+            END DO
+        ELSE IF (((INTERF.EQ.0).AND.(NOTHER.EQ.1)).OR.LOOP_EXIT) THEN
+            DO
+                READ(2,*,END=99) OFFSET, NPT
+                NEWFLAG = 1
+                ZZ(1)   = 0.
+                IZ      = NPT + 1
+
+                READ(2,*) (ZZ(I),I=2,IZ)
+                NL = NPT
+                NP = (IZ-1) * NSEG
+                REWIND 1
+                CALL SCERJ
+                CALL CALCUL
+            END DO
+        END IF
+      END IF
+
+   99 STOP
+
+
+      END PROGRAM Sadichchha_Geotrack
+
+C***********************************************************
+      SUBROUTINE SCERJ
+C***********************************************************
+      INTEGER, PARAMETER :: MAX_NS = 7
+      REAL E(MAX_NS), VRAT(MAX_NS), HH(7), WGT, RR(110), ZZ(20), PSI
+      COMMON /SCERJ_GL/ E, VRAT, HH, WGT, IZ, IR, RR, ZZ, NS, PSI
+C**************************************************************
+      LOGICAL LOG
+C***********************************************************
+      LOG = .TRUE.
+
+      IF(.NOT.(WGT.GT.0.0)) THEN
+        WRITE(*,21) WGT
+   21   FORMAT ('INPUT ERROR, THE VALUE OF WGT IS LESS THAN ZERO,
+     *          WGT = ',E10.4)
+        LOG = .FALSE.
+      END IF
+
+      IF (.NOT.(WGT.LT.0.100E08)) THEN
+        WRITE(*,22) WGT
+   22   FORMAT ('INPUT ERROR, THE VALUE OF WGT IS GREATER THAN 0.100E0
+     *           8, WGT =',E10.4)
+        LOG = .FALSE.
+      END IF
+
+      IF (.NOT.(PSI.GT.0.0)) THEN
+        WRITE(*,23) PSI
+   23   FORMAT ('INPUT ERROR, PSI IS LESS THAN ZERO, PSI =',E10.4)
+        LOG = .FALSE.
+      END IF
+
+      IF (.NOT.(PSI.LT.0.100E05)) THEN
+        WRITE(*,24) PSI
+   24   FORMAT ('INPUT ERROR, PSI IS GREATER THAN 10000.0, PSI =',E10.4)
+        LOG = .FALSE.
+      END IF
+
+      IF (.NOT.(NS.GT.0)) THEN
+        WRITE(*,25) NS
+   25   FORMAT ('INPUT ERROR, NS IS LESS THAN ZERO, NS =',I4)
+        LOG = .FALSE.
+      END IF
+
+      IF (.NOT.(NS.LE.5)) THEN
+        WRITE(*,26) NS
+   26   FORMAT ('INPUT ERROR, NS IS GREATER THAN  5, NS =',I4)
+        LOG = .FALSE.
+      END IF
+
+      IF (.NOT.(IR.GT.0)) THEN
+        WRITE(*,27) IR
+   27   FORMAT ('INPUT ERROR, IR IS LESS THAN ZERO, IR =',I4)
+        LOG = .FALSE.
+      END IF
+
+      IF (.NOT.(IR.LE.110)) THEN
+        WRITE(*,28) IR
+   28   FORMAT ('INPUT ERROR, IR IS GREATER THAN 110,IR=',I4)
+        LOG = .FALSE.
+      END IF
+
+      IF (.NOT.(IZ.GT.0)) THEN
+        WRITE(*,29) IZ
+   29   FORMAT ('INPUT ERROR, IZ IS LESS THAN ZERO, IZ =',I4)
+        LOG = .FALSE.
+      END IF
+
+      IF (.NOT.(IZ.LT.100)) THEN
+        WRITE(*,30) IZ
+   30   FORMAT ('INPUT ERROR, IZ IS GREATER THAN 100, IZ =',I4)
+        LOG = .FALSE.
+      END IF
+
+      IF(.NOT.(NS.GT.15)) THEN
+        IF(.NOT.(NS.LT.1)) THEN
+            DO I = 1, NS
+                IF (.NOT.(E(I).GT.100)) THEN
+                    WRITE(*,31)I,I,E(I)
+   31               FORMAT ('INPUT ERROR, E(',I2,') IS LESS THAN 100,
+     *              E(',I2,') =',E10.4)
+                    LOG = .FALSE.
+                END IF
+
+                IF (.NOT.(E(I).LT.0.100E30)) THEN
+                    WRITE(*,32) I,I,E(I)
+   32               FORMAT ('INPUT ERROR, E(',I2,') IS GREATER THAN
+     *              0.100E30, E(',I2,') =',E10.4)
+                    LOG = .FALSE.
+                END IF
+
+                IF (.NOT.(VRAT(I).GT.0.05)) THEN
+                    WRITE(*,33) I,I,VRAT(I)
+   33               FORMAT ('INPUT ERROR, U(',I2,') IS LESS THAN 0.05,
+     *              U(',I2,') =',E10.4)
+                    LOG = .FALSE.
+                END IF
+
+                IF (.NOT.(VRAT(I).LE.0.50)) THEN
+                    WRITE(*,34) I,I,VRAT(I)
+   34               FORMAT ('INPUT ERROR, U(',I2,') IS GREATER THAN
+     *              0.50, U(',I2,') =',E10.4)
+                    LOG = .FALSE.
+                END IF
+            END DO
+        END IF
+      END IF
+
+      IF (.NOT.(IR.LE.0)) THEN
+        IF (.NOT.(IR.GT.99)) THEN
+            DO I = 1, IR
+                IF (.NOT.(RR(I).GT.-0.001)) THEN
+                    WRITE(*,35)I,I,RR(I)
+   35               FORMAT ('INPUT ERROR, R(',I2,') IS LESS THAN ZERO,
+     *              R(',I2,') =',E10.4)
+                    LOG = .FALSE.
+                END IF
+
+                IF (.NOT.(RR(I).LT.1000.0)) THEN
+                    WRITE(*,36) I,I,RR(I)
+   36               FORMAT ('INPUT ERROR, R(',I2,') IS GREATER THAN
+     *              1000, R(',I2,') =',E10.4)
+                    LOG = .FALSE.
+                END IF
+
+             END DO
+         END IF
+      END IF
+
+      IF (.NOT.(IZ.LE.0)) THEN
+        IF (.NOT.(IZ.GT.99)) THEN
+            DO I = 1, IZ
+                IF (.NOT.(ZZ(I).GT.-0.001)) THEN
+                   WRITE(*,37) I,I,ZZ(I)
+   37              FORMAT ('INPUT ERROR, Z(',I2,') IS LESS THAN ZERO,
+     *             Z(',I2,') =',E10.4)
+                   LOG = .FALSE.
+                END IF
+
+                IF (.NOT.(ZZ(I).LT.1000.0)) THEN
+                    WRITE(*,38) I,I,ZZ(I)
+   38               FORMAT ('INPUT ERROR, Z(',I2,') IS GREATER THAN
+     *              1000, Z(',I2,') =',E10.4)
+                    LOG = .FALSE.
+                END IF
+
+            END DO
+        END IF
+      END IF
+      N = NS-1
+      IF (.NOT.(N.LE.0)) THEN
+        IF(.NOT.(N.GT.14)) THEN
+            DO I = 1, N
+                IF (.NOT.(HH(I).GT.0.0)) THEN
+                    WRITE(*,39) I,I,HH(I)
+   39               FORMAT ('INPUT ERROR, H',I2,' IS LESS THAN ZERO,
+     *              H',I2,' =',E10.4)
+                    LOG = .FALSE.
+                END IF
+
+                IF (.NOT.(HH(I).LT.1000.0)) THEN
+                   WRITE(*,40) I,I,HH(I)
+   40              FORMAT ('INPUT ERROR, H',I2,' IS GREATER THAN 1000,
+     *             H',I2,' =',E10.4)
+                   LOG = .FALSE.
+                END IF
+            END DO
+        END IF
+      END IF
+
+      IF(.NOT.LOG) STOP
+
+      RETURN
+
+      END SUBROUTINE SCERJ
+
+
+C*********************************************************************
+      SUBROUTINE CALCUL
+C*********************************************************************
+
+      INTEGER I, N, NEWFLAG, CRIBOPT, NITER, NSTEPS
+      DIMENSION CHECKR(50)
+      CHARACTER(80) :: TITLE
+      INTEGER, PARAMETER :: MAX_NS = 7
+      LOGICAL :: LOOP_RUN = .FALSE.
+
+      REAL E(MAX_NS), VRAT(MAX_NS), HH(7), WGT, RR(110), ZZ(20), PSI,
+     *     H(6), ANGNEW(60), TIESP, TIEL, OFFSET
+
+      COMMON /SCERJ_GL/ E, VRAT, HH, WGT, IZ, IR, RR, ZZ, NS, PSI
+      COMMON /CALCUL_GL/ TITLE, H, ANGNEW, NEWFLAG, CRIBOPT, NITER,
+     *                   NSTEPS, TIESP, TIEL, OFFSET
+
+C***********************************************************************
+      DATA NPAGE/0/
+      CHARACTER(4) FCP017, FCP016, ASTER, PERD
+
+      OPEN(UNIT=1, STATUS='SCRATCH', FORM='FORMATTED')
+
+      FCP017 = '....'
+      FCP016 = '****'
+C     VALUE OF ITN NEVER DEFINED????????????????????????????????????????
+C     I = 1, ITN (??????????????????????????????????????????????????????
+C     ITN4 = ITN*4
+      ASTER = FCP016
+      PERD = FCP017
+      N = NS-1
+
+      DDDD = 0.31830989E0*WGT/PSI
+      AR = SQRT(DDDD)
+      NLINE = 17+NS
+      NPAGE = NPAGE+1
+
+      IOPT = 1
+      IF(IOPT.EQ.1) THEN
+        WRITE(*,40)(ASTER,I=1,5),TITLE,(ASTER,I=1,4),NPAGE
+   40   FORMAT (//5A4,1X,A34,1X,4A4,'  PAGE',I2)
+
+        WRITE(*,41)WGT,PSI,AR,(I,E(I),VRAT(I),HH(I),I=1,N)
+
+   41   FORMAT (20X,'THE PROBLEM PARAMETERS ARE'/,20X,'TOTAL LOAD...',
+     *  7X,F10.2,'  LBS'/20X,'TIRE PRESSURE..',5X,F10.2,'  PSI'/,20X,
+     *  'LOAD RADIUS..',7X,F10.2,'  IN.'//(20X,'LAYER',I3,
+     *  '  HAS MODULUS ',E10.3,'   POISSONS RATIO ',F5.3,'  THICKNESS '
+     *  ,F6.2,' IN.'))
+
+        WRITE(*,42)NS,E(NS),VRAT(NS)
+   42  FORMAT(20X,'LAYER',I3,'  HAS MODULUS ',E10.3,'   POISSONS RATIO '
+     *  ,F5.3,'  AND IS SEMI-INFINITE.')
+
+        WRITE(*,43)(PERD,J=1,27)
+   43   FORMAT (/34X,'S T R E S S E S',26X,'DISPLACEMENT',15X,'S T
+     *  R A I N S'/13X,15A4,3X,3A4,3X,9A4/'   R',5X,'Z',6X,'VERTICAL',
+     *  3X,'TANGENTIAL',3X,'RADIAL',6X,'SHEAR',7X,'BULK',11X,'VERTICAL'
+     *  ,7X,'RADIAL',6X,'SHEAR',7X,'BULK'/ )
+      END IF
+
+      ! ADJUST LAYER DEPTHS !
+      H(1) = HH(1)
+
+      DO I = 2, N
+        H(I) = H(I-1) + HH(I)
+      END DO
+        IF (.NOT.(NEWFLAG.EQ.1)) THEN
+            IF (.NOT.((CRIBOPT.EQ.1).AND.(NSTEPS.GE.NITER))) THEN
+      ! DEFINE AN ARRAY WHOSE ELEMENTS EQUAL THE CRIB RADIUS NUMBERS !
+                III = 1
+               DO KRADNO = 2, 101, 11
+                    KTEMP = KRADNO
+                    KSTOP = KTEMP + 8
+                    DO LL = KTEMP, KSTOP, 2
+                        CHECKR(III) = LL
+                        III = III + 1
+                    END DO
+               END DO
+            END IF
+        ELSE
+            IR = 60
+            SEGL = TIEL/10
+            DO INEW = 1, 6
+                Y = (INEW - 1)*TIESP
+                DO JNEW = 1, 10
+                    X = OFFSET-(TIEL/2.)+((JNEW-1)*SEGL)+(SEGL/2.)
+                    KNEW = (INEW-1)*10+JNEW
+                    RR(KNEW) = SQRT(X**2+Y**2)
+                    ANGNEW(KNEW) = ATAN(Y/X)
+                END DO
+            END DO
+        END IF
+
+      IRT = 0
+      ! START ON A NEW R !
+      DO
+          IRT = IRT + 1
+          IF (NEWFLAG.EQ.1) EXIT
+          IF ((CRIBOPT.EQ.1).AND.(NSTEPS.GE.NITER)) EXIT
+
+          ! CHECK TO SEE IF THE RADIUS BEING SOLVED FOR CORRESPONDS TO
+          ! A CRIB RADIUS NUMBER. IF IT DOES, DO NOT SOLVE FOR THE
+          ! COEFFICIENTS AND WRITE ZEROS FOR THE CRIB AREA COEFFICIENTS.
+          DO LL = 1, 50
+            ISPOT = INT(CHECKR(LL))
+            IF (IRT.EQ.ISPOT) THEN
+                CSZ = 0.
+                CST = 0.
+                CTR = 0.
+                CSR = 0.
+                COM = 0.
+
+                DO III=1,IZ
+                    WRITE(*,511) CSZ, CST, CTR, CSR, COM
+  511               FORMAT(5E12.5)
+                END DO
+
+                LOOP_RUN = .TRUE.
+            END IF
+          END DO
+          IF(.NOT.LOOP_RUN) EXIT
+      END DO
+      END SUBROUTINE CALCUL
+
+
+C***********************************************************************
+C     DEFLECTIONS CALC FROM SCRATCH
+C***********************************************************************
+
+C      SUBROUTINE DEF_CALC
+C      DIMENSION YI(4, 20), V(50)
+
+      ! N = Number of ties                            6
+      ! M = Number of segments in each tie(divisions) 10
+C      INTEGER N, M
+
+C      N = 6
+C      M = 10
+C      MN = M * N
+
+C      DO I = 1,N
+C        DO J = 1,M
+C            YI(1,I) = V(MN+I)
+C            YI(2,I) = V(MN+N+I)
+C            YI(3,I) = V(MN+2*N+I)
+C            IF(.NOT.(TID.EQ.TIE)) THEN
+C                YI(3,I) = V(MN+2*N+I)
+C                YI(4,I) = V(MN+3*N+I)
+C            END IF
+
+C        END DO
+C      END DO
+
+C      END SUBROUTINE DEF_CALC
